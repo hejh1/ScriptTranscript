@@ -3,11 +3,25 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		54CFD2242C9C444A00EE6F39 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CFD2232C9C444A00EE6F39 /* main.swift */; };
+		54CFD2382C9C47D800EE6F39 /* LocalTranscriptViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CFD22B2C9C47D800EE6F39 /* LocalTranscriptViewModel.swift */; };
+		54CFD2392C9C47D800EE6F39 /* whisper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 54CFD22C2C9C47D800EE6F39 /* whisper.cpp */; };
+		54CFD23A2C9C47D800EE6F39 /* WhisperUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CFD22D2C9C47D800EE6F39 /* WhisperUtils.swift */; };
+		54CFD23B2C9C47D800EE6F39 /* WhisperTranscriptionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CFD22E2C9C47D800EE6F39 /* WhisperTranscriptionManager.swift */; };
+		54CFD23C2C9C47D800EE6F39 /* TranscriptionTimeTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CFD22F2C9C47D800EE6F39 /* TranscriptionTimeTracker.swift */; };
+		54CFD23D2C9C47D800EE6F39 /* LibWhisper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CFD2332C9C47D800EE6F39 /* LibWhisper.swift */; };
+		54CFD23E2C9C47D800EE6F39 /* vadLib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CFD2342C9C47D800EE6F39 /* vadLib.swift */; };
+		54CFD23F2C9C47D800EE6F39 /* ggml.c in Sources */ = {isa = PBXBuildFile; fileRef = 54CFD2352C9C47D800EE6F39 /* ggml.c */; };
+		54CFD2402C9C47D800EE6F39 /* WhisperCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CFD2362C9C47D800EE6F39 /* WhisperCommon.swift */; };
+		54CFD2432C9C481200EE6F39 /* libfvad in Frameworks */ = {isa = PBXBuildFile; productRef = 54CFD2422C9C481200EE6F39 /* libfvad */; };
+		54CFD2462C9C4DDE00EE6F39 /* librnn_vad in Frameworks */ = {isa = PBXBuildFile; productRef = 54CFD2452C9C4DDE00EE6F39 /* librnn_vad */; };
+		54CFD2482C9C4DDE00EE6F39 /* librnnoise in Frameworks */ = {isa = PBXBuildFile; productRef = 54CFD2472C9C4DDE00EE6F39 /* librnnoise */; };
+		54CFD24A2C9C535000EE6F39 /* InterViewScroptModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CFD2492C9C535000EE6F39 /* InterViewScroptModel.swift */; };
+		54CFD24C2C9C543D00EE6F39 /* AudioProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CFD24B2C9C543D00EE6F39 /* AudioProcessor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +39,21 @@
 /* Begin PBXFileReference section */
 		54CFD2202C9C444A00EE6F39 /* ScriptTranscript */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ScriptTranscript; sourceTree = BUILT_PRODUCTS_DIR; };
 		54CFD2232C9C444A00EE6F39 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		54CFD22A2C9C47D800EE6F39 /* ScriptTranscript-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ScriptTranscript-Bridging-Header.h"; sourceTree = "<group>"; };
+		54CFD22B2C9C47D800EE6F39 /* LocalTranscriptViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalTranscriptViewModel.swift; sourceTree = "<group>"; };
+		54CFD22C2C9C47D800EE6F39 /* whisper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = whisper.cpp; sourceTree = "<group>"; };
+		54CFD22D2C9C47D800EE6F39 /* WhisperUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhisperUtils.swift; sourceTree = "<group>"; };
+		54CFD22E2C9C47D800EE6F39 /* WhisperTranscriptionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhisperTranscriptionManager.swift; sourceTree = "<group>"; };
+		54CFD22F2C9C47D800EE6F39 /* TranscriptionTimeTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranscriptionTimeTracker.swift; sourceTree = "<group>"; };
+		54CFD2302C9C47D800EE6F39 /* SCsynco.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCsynco.h; sourceTree = "<group>"; };
+		54CFD2322C9C47D800EE6F39 /* ggml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ggml.h; sourceTree = "<group>"; };
+		54CFD2332C9C47D800EE6F39 /* LibWhisper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibWhisper.swift; sourceTree = "<group>"; };
+		54CFD2342C9C47D800EE6F39 /* vadLib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vadLib.swift; sourceTree = "<group>"; };
+		54CFD2352C9C47D800EE6F39 /* ggml.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ggml.c; sourceTree = "<group>"; };
+		54CFD2362C9C47D800EE6F39 /* WhisperCommon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhisperCommon.swift; sourceTree = "<group>"; };
+		54CFD2372C9C47D800EE6F39 /* whisper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = whisper.h; sourceTree = "<group>"; };
+		54CFD2492C9C535000EE6F39 /* InterViewScroptModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterViewScroptModel.swift; sourceTree = "<group>"; };
+		54CFD24B2C9C543D00EE6F39 /* AudioProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioProcessor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +61,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54CFD2432C9C481200EE6F39 /* libfvad in Frameworks */,
+				54CFD2462C9C4DDE00EE6F39 /* librnn_vad in Frameworks */,
+				54CFD2482C9C4DDE00EE6F39 /* librnnoise in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,7 +89,22 @@
 		54CFD2222C9C444A00EE6F39 /* ScriptTranscript */ = {
 			isa = PBXGroup;
 			children = (
+				54CFD2352C9C47D800EE6F39 /* ggml.c */,
+				54CFD2322C9C47D800EE6F39 /* ggml.h */,
+				54CFD2332C9C47D800EE6F39 /* LibWhisper.swift */,
+				54CFD22B2C9C47D800EE6F39 /* LocalTranscriptViewModel.swift */,
+				54CFD2302C9C47D800EE6F39 /* SCsynco.h */,
+				54CFD22F2C9C47D800EE6F39 /* TranscriptionTimeTracker.swift */,
+				54CFD2342C9C47D800EE6F39 /* vadLib.swift */,
+				54CFD22C2C9C47D800EE6F39 /* whisper.cpp */,
+				54CFD2372C9C47D800EE6F39 /* whisper.h */,
+				54CFD2362C9C47D800EE6F39 /* WhisperCommon.swift */,
+				54CFD22E2C9C47D800EE6F39 /* WhisperTranscriptionManager.swift */,
+				54CFD22D2C9C47D800EE6F39 /* WhisperUtils.swift */,
 				54CFD2232C9C444A00EE6F39 /* main.swift */,
+				54CFD22A2C9C47D800EE6F39 /* ScriptTranscript-Bridging-Header.h */,
+				54CFD2492C9C535000EE6F39 /* InterViewScroptModel.swift */,
+				54CFD24B2C9C543D00EE6F39 /* AudioProcessor.swift */,
 			);
 			path = ScriptTranscript;
 			sourceTree = "<group>";
@@ -78,6 +125,11 @@
 			dependencies = (
 			);
 			name = ScriptTranscript;
+			packageProductDependencies = (
+				54CFD2422C9C481200EE6F39 /* libfvad */,
+				54CFD2452C9C4DDE00EE6F39 /* librnn_vad */,
+				54CFD2472C9C4DDE00EE6F39 /* librnnoise */,
+			);
 			productName = ScriptTranscript;
 			productReference = 54CFD2202C9C444A00EE6F39 /* ScriptTranscript */;
 			productType = "com.apple.product-type.tool";
@@ -94,6 +146,7 @@
 				TargetAttributes = {
 					54CFD21F2C9C444A00EE6F39 = {
 						CreatedOnToolsVersion = 15.4;
+						LastSwiftMigration = 1540;
 					};
 				};
 			};
@@ -106,6 +159,10 @@
 				Base,
 			);
 			mainGroup = 54CFD2172C9C444A00EE6F39;
+			packageReferences = (
+				54CFD2412C9C481200EE6F39 /* XCLocalSwiftPackageReference "ScriptTranscript/libfvad" */,
+				54CFD2442C9C4DDE00EE6F39 /* XCLocalSwiftPackageReference "ScriptTranscript/rnnoise" */,
+			);
 			productRefGroup = 54CFD2212C9C444A00EE6F39 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -120,7 +177,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54CFD24A2C9C535000EE6F39 /* InterViewScroptModel.swift in Sources */,
+				54CFD23D2C9C47D800EE6F39 /* LibWhisper.swift in Sources */,
+				54CFD2402C9C47D800EE6F39 /* WhisperCommon.swift in Sources */,
+				54CFD23E2C9C47D800EE6F39 /* vadLib.swift in Sources */,
+				54CFD23F2C9C47D800EE6F39 /* ggml.c in Sources */,
+				54CFD24C2C9C543D00EE6F39 /* AudioProcessor.swift in Sources */,
+				54CFD23A2C9C47D800EE6F39 /* WhisperUtils.swift in Sources */,
+				54CFD2382C9C47D800EE6F39 /* LocalTranscriptViewModel.swift in Sources */,
 				54CFD2242C9C444A00EE6F39 /* main.swift in Sources */,
+				54CFD2392C9C47D800EE6F39 /* whisper.cpp in Sources */,
+				54CFD23C2C9C47D800EE6F39 /* TranscriptionTimeTracker.swift in Sources */,
+				54CFD23B2C9C47D800EE6F39 /* WhisperTranscriptionManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,8 +316,17 @@
 		54CFD2282C9C444A00EE6F39 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				OTHER_CFLAGS = (
+					"-DACCELERATE_NEW_LAPACK",
+					"-DACCELERATE_LAPACK_ILP64",
+					"-O3",
+					"-DNDEBUG",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ScriptTranscript/ScriptTranscript-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -257,8 +334,16 @@
 		54CFD2292C9C444A00EE6F39 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				OTHER_CFLAGS = (
+					"-DACCELERATE_NEW_LAPACK",
+					"-DACCELERATE_LAPACK_ILP64",
+					"-O3",
+					"-DNDEBUG",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ScriptTranscript/ScriptTranscript-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
@@ -285,6 +370,32 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		54CFD2412C9C481200EE6F39 /* XCLocalSwiftPackageReference "ScriptTranscript/libfvad" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ScriptTranscript/libfvad;
+		};
+		54CFD2442C9C4DDE00EE6F39 /* XCLocalSwiftPackageReference "ScriptTranscript/rnnoise" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ScriptTranscript/rnnoise;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		54CFD2422C9C481200EE6F39 /* libfvad */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = libfvad;
+		};
+		54CFD2452C9C4DDE00EE6F39 /* librnn_vad */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = librnn_vad;
+		};
+		54CFD2472C9C4DDE00EE6F39 /* librnnoise */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = librnnoise;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 54CFD2182C9C444A00EE6F39 /* Project object */;
 }
