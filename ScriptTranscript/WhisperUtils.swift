@@ -110,7 +110,7 @@ func modelPath() -> URL? {
 //    let relativeFilePath = "Resources/ggml-base.bin"
 //    let fullPath = currentDirectoryPath + "/" + relativeFilePath
 //    let fileURL = URL(fileURLWithPath: fullPath)
-    let fileURL = URL(fileURLWithPath: LocalPath).appendingPathComponent(WhisperModelName)
+    let fileURL = URL(fileURLWithPath: WhisperModelPath)
     return fileURL
 }
 

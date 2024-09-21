@@ -76,8 +76,7 @@ class LocalTranscriptViewModel: ObservableObject {
                     print("Microphone audio buffer length \(audioBuffer.count)")
 
                     // Process if enough audio samples have been accumulated
-//                    if audioBuffer.count >= stepSamples && isSpeaking(audioBuffer) {
-                    if audioBuffer.count >= stepSamples {
+                    if audioBuffer.count >= stepSamples && isSpeaking(audioBuffer) {
                         await processAudioChunk()
                         keepOldAudioForContext()
                         audioBuffer.removeAll()

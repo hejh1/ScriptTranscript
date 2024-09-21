@@ -7,10 +7,32 @@
 
 import Foundation
 
-let LocalPath = "/Users/jkh/go/src/script_synco/run"
-let WhisperModelName = "ggml-base.bin"
-let AudioFileName = "output2.wav"
-let OutputFileName = "res.txt"
+//var LocalPath = ""
+var AudioFilePath = "/Users/jkh/go/src/script_synco/ScriptTranscript/Resources/output2.wav"
+var OutputFilePath = "/Users/jkh/go/src/script_synco/ScriptTranscript/Resources/res.txt"
+var WhisperModelPath = "/Users/jkh/go/src/script_synco/ScriptTranscript/Resources/ggml-base.bin"
+
+func setArgs() {
+    let arguments = CommandLine.arguments
+    
+    switch arguments.count {
+    case 1:
+        print("no args")
+    case 2:
+        WhisperModelPath = arguments[1]
+    case 3:
+        WhisperModelPath = arguments[1]
+        AudioFilePath = arguments[2]
+    case 4:
+        WhisperModelPath = arguments[1]
+        AudioFilePath = arguments[2]
+        OutputFilePath = arguments[3]
+    default:
+        print("args count not match, count:\(arguments.count)\n")
+    }
+    print("AudioFilePath: \(AudioFilePath)\n")
+    print("OutputFilePath: \(OutputFilePath)\n")
+}
 
 func mainRun() throws {
     do {
@@ -23,7 +45,7 @@ func mainRun() throws {
             transcriptionTimeTracker: transcriptionTimeTracker
         )
         
-        let AudioFileURL = URL(fileURLWithPath: LocalPath).appendingPathComponent(AudioFileName)
+        let AudioFileURL = URL(fileURLWithPath: AudioFilePath)
         model.microphoneProcessor.loadAudioFile(audioPath: AudioFileURL.path())
         
         print("*****length: \(model.microphoneProcessor.dataFloats.count)\n")
@@ -37,7 +59,7 @@ func mainRun() throws {
         
 //        let currentPath = FileManager.default.currentDirectoryPath
 //        let fileURL = URL(fileURLWithPath: currentPath).appendingPathComponent("res.txt")
-        let fileURL = URL(fileURLWithPath: LocalPath).appendingPathComponent(OutputFileName)
+        let fileURL = URL(fileURLWithPath: OutputFilePath)
         
         var textVal = ""
         for transcript in model.localTranscripts {
@@ -57,6 +79,7 @@ func mainRun() throws {
 }
 
 print("Script start!\n")
+setArgs()
 try mainRun()
 print("end\n")
 
