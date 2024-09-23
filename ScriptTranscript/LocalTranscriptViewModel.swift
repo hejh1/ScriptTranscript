@@ -20,7 +20,7 @@ class LocalTranscriptViewModel: ObservableObject {
     
     /// Real-time audio processor to capture audio input from the microphone.
 //    private var microphoneProcessor: MicrophoneInputProcessor
-    var microphoneProcessor: MicrophoneInputProcessor
+    private var microphoneProcessor: MicrophoneInputProcessor
 
     private var vad: VadAudio = VadAudio()
 
@@ -52,9 +52,9 @@ class LocalTranscriptViewModel: ObservableObject {
     private var keepSamples: Int { return (keepMs * sampleRate) / 1000 }
 
     /// Initializes the local transcript view model with a WhisperTranscriptionManager instance.
-    init(whisperTranscriptionManager: WhisperTranscriptionManager, transcriptionTimeTracker: TranscriptionTimeTracker) {
+    init(whisperTranscriptionManager: WhisperTranscriptionManager, transcriptionTimeTracker: TranscriptionTimeTracker, microphoneInputProcessor: MicrophoneInputProcessor) {
         self.whisperTranscriptionManager = whisperTranscriptionManager
-        self.microphoneProcessor = MicrophoneInputProcessor()
+        self.microphoneProcessor = microphoneInputProcessor
         self.transcriptionTimeTracker = transcriptionTimeTracker
     }
 

@@ -111,38 +111,60 @@ class MicrophoneInputProcessor {
         print("Audio processing stopped.")
     }
     
-    func readAudioFile(audioPath: String) -> AVAudioPCMBuffer? {
+    func readAudioFile(audioPath: String) -> [AVAudioPCMBuffer] {
         do {
             if let audioFileURL = filePathURL(filePath: audioPath) {
                 let audioFile = try AVAudioFile(forReading: audioFileURL)
                 let audioFormat = audioFile.processingFormat
-                let frameCount = UInt32(audioFile.length)
+                let fileLength = UInt32(audioFile.length)
+                var frameCount: UInt32 = 0
+                var buffer:[AVAudioPCMBuffer] = []
                 
-                // Create an audio buffer
-                guard let audioBuffer = AVAudioPCMBuffer(pcmFormat: audioFormat, frameCapacity: frameCount) else {
-                    print("Unable to create audio buffer")
-                    return nil
+                while frameCount < fileLength {
+                    let frameToRead = min(fileLength - frameCount,160000)
+                    // Create an audio buffer
+                    guard let audioBuffer = AVAudioPCMBuffer(pcmFormat: audioFormat, frameCapacity: frameToRead) else {
+                        print("Unable to create audio buffer")
+                        return []
+                    }
+                    // Read the file into the buffer
+                    try audioFile.read(into: audioBuffer)
+                    buffer.append(audioBuffer)
+                    frameCount += frameToRead
+                    if frameCount >= fileLength {
+                        break
+                    }
                 }
-                // Read the file into the buffer
-                try audioFile.read(into: audioBuffer)
+                print("*******readAudioFile******* buffer count:\(buffer.count)\n")
                 // Return the populated buffer
-                return audioBuffer
+                return buffer
+                
             } else {
-                return nil
+                return []
             }
         } catch {
             print("Error reading audio file: \(error.localizedDescription)")
-            return nil
+            return []
         }
     }
     
     func loadAudioFile(audioPath: String) {
         dataCount = 0
-        if let buf = readAudioFile(audioPath: audioPath) {
-            dataFloats = decodePCMBuffer(buf)
+        let bufList = readAudioFile(audioPath: audioPath)
+        if bufList.count > 0 {
+            for buf in bufList {
+                let data = decodePCMBuffer(buf)
+                dataFloats += data
+            }
         } else {
             print("read audio file failed\n")
         }
+        print("*******loadAudioFile******* data count:\(dataFloats.count)\n")
+//        if let buf = readAudioFile(audioPath: audioPath) {
+//            dataFloats = decodePCMBuffer(buf)
+//        } else {
+//            print("read audio file failed\n")
+//        }
     }
 }
 

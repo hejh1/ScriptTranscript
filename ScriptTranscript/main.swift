@@ -39,16 +39,18 @@ func mainRun() throws {
         var whisperTranscriptionManager: WhisperTranscriptionManager? = nil
         try whisperTranscriptionManager = WhisperTranscriptionManager()
         let transcriptionTimeTracker = TranscriptionTimeTracker()
+        let audioProcessor = MicrophoneInputProcessor()
         
         let model = LocalTranscriptViewModel(
             whisperTranscriptionManager: whisperTranscriptionManager!,
-            transcriptionTimeTracker: transcriptionTimeTracker
+            transcriptionTimeTracker: transcriptionTimeTracker,
+            microphoneInputProcessor: audioProcessor
         )
         
         let AudioFileURL = URL(fileURLWithPath: AudioFilePath)
-        model.microphoneProcessor.loadAudioFile(audioPath: AudioFileURL.path())
+        audioProcessor.loadAudioFile(audioPath: AudioFileURL.path())
         
-        print("*****length: \(model.microphoneProcessor.dataFloats.count)\n")
+        print("*****length: \(audioProcessor.dataFloats.count)\n")
         
         model.startTranscription()
         
