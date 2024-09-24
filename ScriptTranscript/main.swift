@@ -66,7 +66,7 @@ func mainRun() throws {
         var textVal = ""
         for transcript in model.localTranscripts {
             if let text = transcript.text {
-                textVal = textVal+text+"\n"
+                textVal = textVal+strFilter(str: text)+"\n"
             }
         }
         do {
@@ -84,4 +84,19 @@ print("Script start!\n")
 setArgs()
 try mainRun()
 print("end\n")
+
+
+func strFilter(str: String) -> String{
+    let pattern = "\\[.*?\\]|\\(.*?\\)"
+
+    if let regex = try? NSRegularExpression(pattern: pattern, options: []) {
+        let range = NSRange(location: 0, length: str.utf16.count)
+        
+        let filteredString = regex.stringByReplacingMatches(in: str, options: [], range: range, withTemplate: "")
+
+        return filteredString.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+    return str
+}
+
 

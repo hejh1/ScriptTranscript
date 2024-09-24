@@ -1,3 +1,4 @@
 Build/
 *.bin
 Resources/audioTranscript/*.txt
+*.mp4
