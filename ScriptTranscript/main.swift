@@ -8,8 +8,8 @@
 import Foundation
 
 //var LocalPath = ""
-var AudioFilePath = "/Users/jkh/go/src/script_synco/ScriptTranscript/Resources/audio/dialog-001.wav"
-var OutputFilePath = "/Users/jkh/go/src/script_synco/ScriptTranscript/Resources/transcript/dialog-001.txt"
+var AudioFilePath = "/Users/jkh/go/src/script_synco/ScriptTranscript/Resources/audioFiles/dialog-003.wav"
+var OutputFilePath = "/Users/jkh/go/src/script_synco/ScriptTranscript/Resources/audioTranscript/dialog-003.txt"
 var WhisperModelPath = "/Users/jkh/go/src/script_synco/ScriptTranscript/Resources/ggml-base.bin"
 
 func setArgs() {
