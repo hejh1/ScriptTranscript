@@ -16,7 +16,7 @@ cd ../
 cp ./copilot/InterviewCopilot/ViewModels/LocalTranscriptViewModel.swift ./ScriptTranscript/
 
 xcodebuild -scheme ScriptTranscript -configuration Debug -derivedDataPath ./Build
-audioFiles=$(ls ./Resources/audio/ | grep '.wav')
+audioFiles=$(ls $audioPath | grep '.wav')
 for file in $audioFiles
 do
   echo $file

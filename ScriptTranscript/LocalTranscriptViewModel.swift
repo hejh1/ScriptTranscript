@@ -63,23 +63,22 @@ class LocalTranscriptViewModel: ObservableObject {
     func startTranscription() {
         guard !isTranscribing else { return } // Avoid starting transcription multiple times
         isTranscribing = true
-        Task {
+        Task.detached(priority: .background) { [weak self] in
+            guard let strongSelf = self else { return }
             do {
                 // Start real-time audio processing from the microphone
-                try microphoneProcessor.startRealTimeProcessing()
+                try strongSelf.microphoneProcessor.startRealTimeProcessing()
                 
                 // Continuously capture and process audio data
-                while isTranscribing {
-                    let newAudioData = microphoneProcessor.getAndResetAudioData()
-                    audioBuffer.append(contentsOf: newAudioData)
-
-                    print("Microphone audio buffer length \(audioBuffer.count)")
+                while strongSelf.isTranscribing {
+                    let newAudioData = strongSelf.microphoneProcessor.getAndResetAudioData()
+                    strongSelf.audioBuffer.append(contentsOf: newAudioData)
 
                     // Process if enough audio samples have been accumulated
-                    if audioBuffer.count >= stepSamples && isSpeaking(audioBuffer) {
-                        await processAudioChunk()
-                        keepOldAudioForContext()
-                        audioBuffer.removeAll()
+                    if strongSelf.audioBuffer.count >= strongSelf.stepSamples && strongSelf.isSpeaking(strongSelf.audioBuffer) {
+                        await strongSelf.processAudioChunk()
+                        strongSelf.keepOldAudioForContext()
+                        strongSelf.audioBuffer.removeAll()
                     }
 
                     // Sleep for 100 milliseconds before checking again
@@ -131,9 +130,21 @@ class LocalTranscriptViewModel: ObservableObject {
     /// Detects whether there is speech in the current audio buffer using Voice Activity Detection (VAD).
     private func isSpeaking(_ audioBuffer: [Float]) -> Bool {
         guard !audioBuffer.isEmpty else { return false }
-        let activity = vad.processVad(buf: audioBuffer)
-        print("Microphone detected activity: \(activity)")
-        return activity == VadVoiceActivity.activeVoice
+
+        do {
+            let activity = try vad.processVad(buf: audioBuffer)
+            print("Microphone detected activity: \(activity)")
+            return activity == VadVoiceActivity.activeVoice
+        } catch VadAudioError.notInitialized {
+            print("VAD is not initialized.")
+            return true
+        } catch VadAudioError.bufferTooShort(let length) {
+            print("Buffer too short for VAD processing. Length: \(length)")
+            return false
+        } catch {
+            print("Unexpected error processing VAD: \(error)")
+            return true
+        }
 
 //        // Basic VAD formula
 //        let rms = calculateRMS(audioBuffer)

@@ -78,3 +78,9 @@ class RnnoiseAudio {
         rnnoise_destroy(model)
     }
 }
+
+enum VadAudioError: Error {
+    case notInitialized
+    case bufferTooShort(length: Int)
+    case processingFailed(error: Error)
+}
