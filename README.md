@@ -17,5 +17,8 @@ Copy model and audio file in `./Resources`. Copy auido files in `./Resources/aud
 // output transcript file
 ./script.sh
 
+// install jiwer
+pip3 install jiwer
+
 // wer rate
 python3 calc_wer.py
