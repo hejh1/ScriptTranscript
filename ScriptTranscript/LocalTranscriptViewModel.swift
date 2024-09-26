@@ -11,45 +11,60 @@ import libfvad
 /// Manages the transcription of local audio (e.g., microphone input) and handles buffering,
 /// transcription, and maintaining a list of local transcripts.
 class LocalTranscriptViewModel: ObservableObject {
-    
+
     /// Holds the list of transcripts generated from local (microphone) audio.
     @Published var localTranscripts: [TranscriptItem] = []
-    
+
     /// Reference to the WhisperTranscriptionManager which handles transcription.
     private var whisperTranscriptionManager: WhisperTranscriptionManager
-    
+
     /// Real-time audio processor to capture audio input from the microphone.
-//    private var microphoneProcessor: MicrophoneInputProcessor
     private var microphoneProcessor: MicrophoneInputProcessor
 
     private var vad: VadAudio = VadAudio()
 
     /// Buffer to accumulate audio data before transcription.
     private var audioBuffer: [Float] = []
-    
-    /// Buffer to store the last portion of audio for context when processing the next chunk.
-    private var oldAudioBuffer: [Float] = []
-    
+
+    /// Buffer to store the audio for the current sentence.
+    private var currentSentenceAudioBuffer: [Float] = []
+
     /// Tracks the  time of the transcription session.
     private let transcriptionTimeTracker: TranscriptionTimeTracker
 
     private var isTranscribing = false
-    
+
     // Parameters for buffer handling and chunk processing
-    private let stepMs: Int = 5000   // Step size in milliseconds (5 seconds)
-    private let lengthMs: Int = 20000 // Maximum length of audio in milliseconds (20 seconds)
-    private let keepMs: Int = 200     // Amount of previous audio to keep in milliseconds (200 ms)
-    
+    private let stepMs: Int = 1000   // Step size in milliseconds (1 seconds)
+    private let frameMs: Int = 500     // Frame size in milliseconds (200 ms)
+    private let lengthMs: Int = 30000 // Maximum length of audio in milliseconds (30 seconds)
+    private let silenceThresholdMs: Int = 1000 // Silence threshold to detect sentence breaks (1.5 seconds)
+
     private let sampleRate: Int = WhisperParams.WHISPER_SAMPLE_RATE // Whisper's expected sample rate (16kHz)
-    
-    /// Number of audio samples in a step chunk.
-    private var stepSamples: Int { return (stepMs * sampleRate) / 1000 }
-    
+
+    /// Number of audio samples in a frame.
+    private var frameSamples: Int { return (frameMs * sampleRate) / 1000 }
+
     /// Maximum number of samples to be processed.
     private var lengthSamples: Int { return (lengthMs * sampleRate) / 1000 }
-    
-    /// Number of audio samples to keep for context between chunks.
-    private var keepSamples: Int { return (keepMs * sampleRate) / 1000 }
+
+    /// Tracks the duration of silence.
+    private var silenceDurationMs: Int = 0
+
+    /// Tracks the time since the last transcription.
+    private var timeSinceLastTranscriptionMs: Int = 0
+
+    /// Interval at which transcription is performed.
+    private let transcriptionIntervalMs: Int = 3000 // Transcribe every 3 second
+
+    /// Tracks whether the last transcript item is finalized.
+    private var lastTranscriptFinalized: Bool = true
+
+    /// Flag to indicate if a transcription is in progress.
+    private var isTranscriptionInProgress = false
+
+    /// Flag to indicates if sentence finalization is in progress.
+    private var isFinalizingSentence = false
 
     /// Initializes the local transcript view model with a WhisperTranscriptionManager instance.
     init(whisperTranscriptionManager: WhisperTranscriptionManager, transcriptionTimeTracker: TranscriptionTimeTracker, microphoneInputProcessor: MicrophoneInputProcessor) {
@@ -74,18 +89,50 @@ class LocalTranscriptViewModel: ObservableObject {
                     let newAudioData = strongSelf.microphoneProcessor.getAndResetAudioData()
                     strongSelf.audioBuffer.append(contentsOf: newAudioData)
 
-                    // Process if enough audio samples have been accumulated
-                    if strongSelf.audioBuffer.count >= strongSelf.stepSamples && strongSelf.isSpeaking(strongSelf.audioBuffer) {
-                        await strongSelf.processAudioChunk()
-                        strongSelf.keepOldAudioForContext()
-                        strongSelf.audioBuffer.removeAll()
+                    // Frame-based Processing:
+                    // - Introduced frameMs and frameSamples to process audio in smaller chunks.
+                    // - This allows for more responsive VAD checks and transcription updates.
+                    while strongSelf.audioBuffer.count >= strongSelf.frameSamples {
+                        let frame = Array(strongSelf.audioBuffer.prefix(strongSelf.frameSamples))
+                        strongSelf.audioBuffer.removeFirst(strongSelf.frameSamples)
+                        
+                        // Check VAD on the frame - tracking silence duration
+                        if strongSelf.isSpeaking(frame) {
+                            strongSelf.currentSentenceAudioBuffer.append(contentsOf: frame)
+                            strongSelf.silenceDurationMs = 0
+                        } else {
+                            strongSelf.silenceDurationMs += strongSelf.frameMs
+                            print("LocalTranscriptViewModel: silence duration - \(strongSelf.silenceDurationMs) ms")
+                            // Do not append silence frames
+                        }
+                        
+                        // Check for sentence break - bulge-in or too long.
+                        if strongSelf.silenceDurationMs >= strongSelf.silenceThresholdMs || strongSelf.currentSentenceAudioBuffer.count >= strongSelf.lengthSamples {
+                            // Sentence break detected
+                            await strongSelf.finalizeCurrentSentence()
+                        }
+                        
+                        // Update time since last transcription
+                        strongSelf.timeSinceLastTranscriptionMs += strongSelf.frameMs
+
+                        // Transcription frequency:
+                        // - Transcription occurs every transcriptionIntervalMs (1 second) as defined by timeSinceLastTranscriptionMs.
+                        // - The processCurrentSentence function updates the last TranscriptItem with new transcriptions.
+                        // - If a sentence-ending punctuation is detected, it finalizes the current sentence.
+                        if strongSelf.timeSinceLastTranscriptionMs >= strongSelf.transcriptionIntervalMs {
+                            // Transcribe current sentence audio buffer
+                            if !strongSelf.isTranscriptionInProgress && !strongSelf.currentSentenceAudioBuffer.isEmpty {
+                                strongSelf.timeSinceLastTranscriptionMs = 0
+                                await strongSelf.processCurrentSentence()
+                            }
+                        }
                     }
 
                     // Sleep for 100 milliseconds before checking again
                     try await Task.sleep(nanoseconds: 100_000_000)
                 }
             } catch {
-                print("Error starting transcription: \(error.localizedDescription)")
+                print("LocalTranscriptViewModel: error starting transcription: \(error.localizedDescription)")
             }
         }
     }
@@ -94,55 +141,160 @@ class LocalTranscriptViewModel: ObservableObject {
     func stopTranscription() {
         isTranscribing = false
         microphoneProcessor.stopRecord()
-        print("Transcription stopped.")
+        print("LocalTranscriptViewModel: stopped.")
+        printTranscripts()
     }
 
-    /// Processes a chunk of audio data by combining current and old audio for context,
-    /// then transcribes the audio using WhisperTranscriptionManager.
-    private func processAudioChunk() async {
-        // Combine old audio with the new buffer for context
-        var combinedAudio = oldAudioBuffer + audioBuffer
-        
-        // Truncate if the combined audio exceeds the maximum length
-        if combinedAudio.count > lengthSamples {
-            combinedAudio = Array(combinedAudio.suffix(lengthSamples))
+    /// Processes the current sentence audio buffer by transcribing it and updating the last TranscriptItem.
+    /// Transcription occurs every transcriptionIntervalMs (1 second) as defined by timeSinceLastTranscriptionMs.
+    private func processCurrentSentence() async {
+        guard !isTranscriptionInProgress else { return }
+        isTranscriptionInProgress = true
+        let combinedAudio = currentSentenceAudioBuffer
+        if combinedAudio.isEmpty {
+            isTranscriptionInProgress = false
+            return
         }
-        print("Process microphone captured audio: \(combinedAudio.count)")
-        // Transcribe the audio using WhisperTranscriptionManager
-        let finalTranscripts = await whisperTranscriptionManager.transcribeAudio(combinedAudio)
 
-        // Update the list of local transcripts
+        print("LocalTranscriptViewModel: starting transcription in processCurrentSentence")
+        let transcripts = await self.whisperTranscriptionManager.transcribeAudio(combinedAudio)
+        print("LocalTranscriptViewModel: finished transcription in processCurrentSentence")
+
         DispatchQueue.main.async {
-            for transcript in finalTranscripts {
-                let item = TranscriptItem(role: "Interviewee", text: transcript.text, start: self.transcriptionTimeTracker.elapsedTimeSinceStart())
-                if !self.localTranscripts.contains(where: { $0.text == transcript.text }) {
+            var sentence = ""
+            for transcript in transcripts {
+                sentence.append(transcript.text ?? "")
+            }
+            if self.isSentenceBreak(sentence: sentence) {
+                self.currentSentenceAudioBuffer.removeAll()
+                print("LocalTranscriptViewModel: cleared buffer in processCurrentSentence")
+            } else {
+                if !self.lastTranscriptFinalized, let lastIndex = self.localTranscripts.indices.last {
+                    print("LocalTranscriptViewModel: updating transcript at last index \(lastIndex)")
+                    self.localTranscripts[lastIndex].text = sentence
+                } else {
+                    // No last item or last item is finalized, create a new one
+                    let item = TranscriptItem(role: "Interviewee", text: sentence, start: self.transcriptionTimeTracker.elapsedTimeSinceStart())
                     self.localTranscripts.append(item)
+                    self.lastTranscriptFinalized = false
                 }
             }
         }
+
+        isTranscriptionInProgress = false
     }
 
-    /// Stores a portion of the current audio buffer for use as context in the next transcription chunk.
-    private func keepOldAudioForContext() {
-        oldAudioBuffer = Array(audioBuffer.suffix(keepSamples))
+    /// Finalizes the current sentence by transcribing it and starting a new TranscriptItem.
+    private func finalizeCurrentSentence() async {
+        print("LocalTranscriptViewModel: try to finalize current sentence audio.")
+        guard !isFinalizingSentence else { return }
+        isFinalizingSentence = true
+        print("LocalTranscriptViewModel: ready to finalize current sentence audio.")
+        let combinedAudio = currentSentenceAudioBuffer
+        if combinedAudio.isEmpty {
+            isFinalizingSentence = false
+            return
+        }
+        print("LocalTranscriptViewModel: starting transcription in finalizeCurrentSentence")
+        let transcripts = await self.whisperTranscriptionManager.transcribeAudio(combinedAudio)
+        print("LocalTranscriptViewModel: finished transcription in finalizeCurrentSentence")
+
+        // Update the last TranscriptItem and mark it as finalized
+        DispatchQueue.main.async {
+            var sentence = ""
+            for transcript in transcripts {
+                sentence.append(transcript.text ?? "")
+            }
+            if self.isSentenceBreak(sentence: sentence) {
+                print("LocalTranscriptViewModel: empty transcription in finalizeCurrentSentence")
+            } else {
+                if let lastIndex = self.localTranscripts.indices.last {
+                    print("LocalTranscriptViewModel: adding transcript to index \(lastIndex)")
+                    self.localTranscripts[lastIndex].text = sentence
+                    //                    Task {
+                    //                        // Post-process and assign the result back to the array
+                    //                        if let updatedItem = await self.postProcessSentence(transcript.text, for: self.localTranscripts[lastIndex]) {
+                    //                            DispatchQueue.main.async {
+                    //                                self.localTranscripts[lastIndex] = updatedItem
+                    //                            }
+                    //                        }
+                    //                    }
+                } else {
+                    // No last item, create a new one
+                    print("LocalTranscriptViewModel: appending transcript to index.")
+                    let item = TranscriptItem(role: "Interviewee", text: sentence, start: self.transcriptionTimeTracker.elapsedTimeSinceStart())
+                    self.localTranscripts.append(item)
+                    
+                    //                    Task {
+                    //                        // Post-process and assign the result back to the array
+                    //                        if let updatedItem = await self.postProcessSentence(transcript.text, for: item) {
+                    //                            DispatchQueue.main.async {
+                    //                                if let index = self.localTranscripts.firstIndex(where: { $0.start == item.start }) {
+                    //                                    self.localTranscripts[index] = updatedItem
+                    //                                }
+                    //                            }
+                    //                        }
+                    //                    }
+                }
+            }
+            // Clear the current sentence buffer and reset counters
+            self.lastTranscriptFinalized = true
+            self.currentSentenceAudioBuffer.removeAll()
+            self.silenceDurationMs = 0
+            self.timeSinceLastTranscriptionMs = 0
+        }
+        isFinalizingSentence = false
     }
 
+    /// Sends the finalized sentence to another LLM for post-processing.
+    /// Returns the updated TranscriptItem.
+    private func postProcessSentence(_ text: String?, for item: TranscriptItem) async -> TranscriptItem? {
+        // Placeholder for sending the text to another LLM for post-processing
+        // Implement the interface to call the LLM and get the post-processed text
+        // For example:
+        // let postProcessedText = await anotherLLM.process(text)
+        // var updatedItem = item
+        // updatedItem.text = postProcessedText
+        // return updatedItem
+        var updatedItem = item
+        return updatedItem
+    }
+
+    private func printTranscripts() {
+        print("LocalTranscriptViewModel: total \(localTranscripts.count) transcript items")
+        for transcript in localTranscripts {
+            print("\t - LocalTranscriptViewModel: \(String(describing: transcript.text))")
+        }
+    }
+
+    private func isSentenceBreak(sentence: String) -> Bool {
+        let t = sentence.trimmingCharacters(in: .whitespacesAndNewlines)
+        if t.isEmpty {
+            return true
+        } else if t.hasPrefix("[") && t.hasSuffix("]") {
+            return true
+        } else if t.hasPrefix("(") && t.hasSuffix(")") {
+            return true
+        } else {
+            return false
+        }
+    }
     /// Detects whether there is speech in the current audio buffer using Voice Activity Detection (VAD).
     private func isSpeaking(_ audioBuffer: [Float]) -> Bool {
         guard !audioBuffer.isEmpty else { return false }
 
         do {
             let activity = try vad.processVad(buf: audioBuffer)
-            print("Microphone detected activity: \(activity)")
+            print("LocalTranscriptViewModel VAD detected activity: \(activity)")
             return activity == VadVoiceActivity.activeVoice
         } catch VadAudioError.notInitialized {
-            print("VAD is not initialized.")
+            print("LocalTranscriptViewModel VAD is not initialized.")
             return true
         } catch VadAudioError.bufferTooShort(let length) {
-            print("Buffer too short for VAD processing. Length: \(length)")
+            print("LocalTranscriptViewModel VAD buffer too short for length: \(length)")
             return false
         } catch {
-            print("Unexpected error processing VAD: \(error)")
+            print("LocalTranscriptViewModel VAD unexpected error: \(error)")
             return true
         }
 

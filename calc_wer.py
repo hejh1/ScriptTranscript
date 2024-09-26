@@ -1,11 +1,23 @@
 import jiwer
 import os
 
+# 定义一个去掉换行符的自定义转换
+class RemoveNewLines:
+    def __call__(self, s):
+        return s.replace("\n", " ").replace("\r", " ")
+
 transform = jiwer.Compose([
+    # jiwer.ToLowerCase(),
+    # jiwer.RemovePunctuation(),
+    # jiwer.Strip(),
+    # jiwer.RemoveMultipleSpaces()
+    RemoveNewLines(),
     jiwer.ToLowerCase(),
     jiwer.RemovePunctuation(),
     jiwer.Strip(),
-    jiwer.RemoveMultipleSpaces()
+    jiwer.RemoveMultipleSpaces(),
+    jiwer.RemoveEmptyStrings()
+    # jiwer.RemoveWhiteSpace(replace_by_space=False)
 ])
 
 script_path = 'Resources/audioTranscript/'
@@ -20,20 +32,13 @@ subtitle_files.sort()
 for txt_file in subtitle_files:
     if txt_file in subtitle_files:
         reference_file=script_path+txt_file
-        f1=open(reference_file, encoding='utf-8')
-        reference=""
-        for line in f1:
-            reference = reference + line.strip()
-
+        with open(reference_file, 'r', encoding='utf-8') as file:
+            reference = file.read()
         hypothesis_file=subtitle_path+txt_file
-        f2=open(hypothesis_file, encoding='utf-8')
-        hypothesis=""
-        for line in f2:
-            hypothesis = hypothesis + line.strip()
-
+        with open(hypothesis_file, 'r', encoding='utf-8') as file:
+            hypothesis = file.read()
         transformed_reference = transform(reference)
         transformed_hypothesis = transform(hypothesis)
-
         wer = jiwer.wer(transformed_reference, transformed_hypothesis)
         print(f"{txt_file} Word Error Rate: {wer:.2%}")
     else:

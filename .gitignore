@@ -2,3 +2,4 @@ Build/
 *.bin
 Resources/audioTranscript/*.txt
 *.mp4
+Resources/compare/
