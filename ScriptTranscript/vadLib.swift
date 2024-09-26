@@ -22,27 +22,27 @@ class VadAudio {
     }
     
     func processVad(buf: [Float]) -> VadVoiceActivity {
-        return VadVoiceActivity.activeVoice
-//        var bufInt: [Int16] = []
-//        let int16Max: Int16 = 32767
-//        let samplesPerMs = WhisperParams.WHISPER_SAMPLE_RATE/100
-//        if buf.count < samplesPerMs {
-//            print("processVad buf too short, length: \(buf.count)\n")
-//            return VadVoiceActivity.nonActiveVoice
-//        }
-//        for i in 0..<samplesPerMs {// per ms audio data
-//            bufInt.append(Int16(buf[i] * Float(int16Max)))
-//        }
-//        do {
-//            let activity: VadVoiceActivity = try bufInt.withUnsafeBytes { (pointer: UnsafeRawBufferPointer) in
-//                let p = pointer.assumingMemoryBound(to: Int16.self)
-//                return try self.vad.process(frame: p.baseAddress!, length: p.count)
-//            }
-//            return activity
-//        } catch {
-//            print("VadAudio processVad error: \(error)\n")
-//            return VadVoiceActivity.nonActiveVoice
-//        }
+//        return VadVoiceActivity.activeVoice
+        var bufInt: [Int16] = []
+        let int16Max: Int16 = 32767
+        let samplesPerMs = WhisperParams.WHISPER_SAMPLE_RATE/100
+        if buf.count < samplesPerMs {
+            print("processVad buf too short, length: \(buf.count)\n")
+            return VadVoiceActivity.nonActiveVoice
+        }
+        for i in 0..<samplesPerMs {// per ms audio data
+            bufInt.append(Int16(buf[i] * Float(int16Max)))
+        }
+        do {
+            let activity: VadVoiceActivity = try bufInt.withUnsafeBytes { (pointer: UnsafeRawBufferPointer) in
+                let p = pointer.assumingMemoryBound(to: Int16.self)
+                return try self.vad.process(frame: p.baseAddress!, length: p.count)
+            }
+            return activity
+        } catch {
+            print("VadAudio processVad error: \(error)\n")
+            return VadVoiceActivity.nonActiveVoice
+        }
     }
 }
 
