@@ -59,12 +59,15 @@ actor WhisperContext {
 //            let timeInterval = TimeInterval(t0)
             transcripDate.append(t0)
         }
-        var langID = whisper_full_lang_id(context)
+        let langID = whisper_full_lang_id(context)
         return (langID, transcription,transcripDate)
     }
     
     static func createContext(path: String) throws -> WhisperContext {
-        let context = whisper_init_from_file(path)
+        var cparams: whisper_context_params = whisper_context_default_params();
+        cparams.use_gpu = true
+        cparams.dtw_aheads_preset = WHISPER_AHEADS_BASE
+        let context = whisper_init_from_file_with_params(path, cparams)
         if let context {
             return WhisperContext(context: context)
         } else {
