@@ -65,7 +65,7 @@ actor WhisperContext {
     
     static func createContext(path: String) throws -> WhisperContext {
         var cparams: whisper_context_params = whisper_context_default_params();
-        cparams.use_gpu = true
+        cparams.use_gpu = WhisperParams.is_use_gpu
         cparams.dtw_aheads_preset = WHISPER_AHEADS_BASE
         let context = whisper_init_from_file_with_params(path, cparams)
         if let context {
