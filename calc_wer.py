@@ -1,5 +1,6 @@
 import jiwer
 import os
+import sys
 
 # 定义一个去掉换行符的自定义转换
 class RemoveNewLines:
@@ -22,7 +23,13 @@ transform = jiwer.Compose([
 
 script_path = 'Resources/audioTranscript/'
 subtitle_path = 'Resources/audioSubtitle/'
-
+accent = ""
+if len(sys.argv) > 1:
+    accent = sys.argv[1]
+if accent == 'accent':
+    script_path = 'Resources/accentAudioTranscript/'
+    subtitle_path = 'Resources/accentAudioSubtitle/'
+print(script_path)
 script_files = [file for file in os.listdir(script_path) if file.endswith('.txt') and os.path.isfile(os.path.join(script_path, file))]
 script_files.sort() 
 

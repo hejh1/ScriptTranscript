@@ -15,10 +15,14 @@ Copy model and audio file in `./Resources`. Copy auido files in `./Resources/aud
 ### Run command
 ```
 // output transcript file
+// --a and --accent transcript accent audio files
+// --l abd --language set language, default is 'auto'
 ./script.sh
+./script.sh --a=true --l=en
 
 // install jiwer
 pip3 install jiwer
 
 // wer rate
 python3 calc_wer.py
+python3 calc_wer.py accent

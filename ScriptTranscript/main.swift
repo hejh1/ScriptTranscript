@@ -27,11 +27,25 @@ func setArgs() {
         WhisperModelPath = arguments[1]
         AudioFilePath = arguments[2]
         OutputFilePath = arguments[3]
+    case 5:
+        WhisperModelPath = arguments[1]
+        AudioFilePath = arguments[2]
+        OutputFilePath = arguments[3]
+        WhisperParams.language = arguments[4]
+    case 6:
+        WhisperModelPath = arguments[1]
+        AudioFilePath = arguments[2]
+        OutputFilePath = arguments[3]
+        WhisperParams.language = arguments[4]
+        if arguments[5] == "false" {
+            WhisperParams.is_use_gpu = false
+        }
     default:
         print("args count not match, count:\(arguments.count)\n")
     }
     print("AudioFilePath: \(AudioFilePath)\n")
     print("OutputFilePath: \(OutputFilePath)\n")
+    WhisperParams.is_use_gpu = true
 }
 
 func mainRun() throws {

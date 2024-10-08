@@ -67,7 +67,8 @@ struct WhisperParams {
     static let freq_thold: Float = 100.0
     static let rms_threshold_mic: Float = 0.03
     static let rms_threshold_system: Float = 0.00
-    static let is_use_gpu: Bool = true
+    static var is_use_gpu: Bool = true
+    static var language: String = "auto"
 }
 
 func decodePCMBuffer(_ buffer: AVAudioPCMBuffer) -> [Float] {
