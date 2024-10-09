@@ -29,6 +29,9 @@ class LocalTranscriptViewModel: ObservableObject {
     /// Buffer to store the audio for the current sentence.
     private var currentSentenceAudioBuffer: [Float] = []
 
+    /// Need a dedicated queue to manage the threads of updating buffer for cached sentence.
+    let currentSentenceQueue = DispatchQueue(label: "ai.getsynco.localAudioCurrentSentenceQueue")
+
     /// Tracks the  time of the transcription session.
     private let transcriptionTimeTracker: TranscriptionTimeTracker
 
@@ -37,7 +40,7 @@ class LocalTranscriptViewModel: ObservableObject {
     // Parameters for buffer handling and chunk processing
     private let frameMs: Int = 100     // Frame size in milliseconds (100 ms)
     private let lengthMs: Int = 30000 // Maximum length of audio in milliseconds (30 seconds)
-    private let silenceThresholdMs: Int = 800 // Silence threshold to detect sentence breaks (800 ms)
+    private let silenceThresholdMs: Int = 1000 // Silence threshold to detect sentence breaks (1000 ms)
 
     private let sampleRate: Int = WhisperParams.WHISPER_SAMPLE_RATE // Whisper's expected sample rate (16kHz)
 
@@ -48,7 +51,7 @@ class LocalTranscriptViewModel: ObservableObject {
     private var lengthSamples: Int { return (lengthMs * sampleRate) / 1000 }
 
     /// Minimum number of samples to be processed.
-    private var minimumAudioBufferLength: Int { return (1000 * sampleRate) / 1000 } // 1 second of audio
+    private var minimumAudioBufferLength: Int { return (1500 * sampleRate) / 1000 } // 1.5 second of audio
 
     /// Tracks the duration of silence.
     private var silenceDurationMs: Int = 0
@@ -103,7 +106,13 @@ class LocalTranscriptViewModel: ObservableObject {
                         
                         // Check VAD on the frame - tracking silence duration
                         if strongSelf.isSpeaking(frame) {
-                            strongSelf.currentSentenceAudioBuffer.append(contentsOf: frame)
+                            strongSelf.currentSentenceQueue.sync { [weak self] in
+                                #if DEBUG
+                                Thread.current.name = "MicrophoneCurrentSentenceAppend"
+                                #endif
+                                guard let strongSelf = self else { return }
+                                strongSelf.currentSentenceAudioBuffer.append(contentsOf: frame)
+                            }
                             strongSelf.silenceDurationMs = 0
                         } else {
                             strongSelf.silenceDurationMs += strongSelf.frameMs
@@ -156,14 +165,8 @@ class LocalTranscriptViewModel: ObservableObject {
         guard !isTranscriptionInProgress else { return }
         isTranscriptionInProgress = true
 
-        // Ensure we have accumulated enough audio before transcribing
-        if currentSentenceAudioBuffer.count < minimumAudioBufferLength {
-            isTranscriptionInProgress = false
-            return
-        }
-
         let combinedAudio = currentSentenceAudioBuffer
-        if combinedAudio.isEmpty {
+        if combinedAudio.isEmpty || combinedAudio.count < minimumAudioBufferLength{
             isTranscriptionInProgress = false
             return
         }
@@ -181,7 +184,7 @@ class LocalTranscriptViewModel: ObservableObject {
                 sentence.append(transcript.text ?? "")
             }
             if self.isSentenceBreak(sentence: sentence) {
-                self.currentSentenceAudioBuffer.removeAll()
+                // self.currentSentenceAudioBuffer.removeAll()
                 print("LocalTranscriptViewModel: cleared buffer in processCurrentSentence")
             } else {
                 if !self.lastTranscriptFinalized, let lastIndex = self.localTranscripts.indices.last {
@@ -211,6 +214,10 @@ class LocalTranscriptViewModel: ObservableObject {
             isFinalizingSentence = false
             silenceDurationMs = 0
             timeSinceLastTranscriptionMs = 0
+            return
+        }
+        if combinedAudio.count < minimumAudioBufferLength {
+            isFinalizingSentence = false
             return
         }
         print("LocalTranscriptViewModel: starting transcription in finalizeCurrentSentence")
@@ -244,9 +251,16 @@ class LocalTranscriptViewModel: ObservableObject {
             }
             // Clear the current sentence buffer and reset counters
             self.lastTranscriptFinalized = true
-            self.currentSentenceAudioBuffer.removeAll()
+            // self.currentSentenceAudioBuffer.removeAll()
             self.silenceDurationMs = 0
             self.timeSinceLastTranscriptionMs = 0
+        }
+        self.currentSentenceQueue.sync { [weak self] in
+            #if DEBUG
+            Thread.current.name = "MicrophoneCurrentSentenceRemove"
+            #endif
+            guard let strongSelf = self else { return }
+            strongSelf.currentSentenceAudioBuffer.removeAll()
         }
         isFinalizingSentence = false
     }
@@ -289,24 +303,24 @@ class LocalTranscriptViewModel: ObservableObject {
         guard !audioBuffer.isEmpty else { return false }
 
         // Basic VAD formula
-        let rms = calculateRMS(audioBuffer)
-        let rmsThreshold: Float = 0.02 // Adjust threshold based on noise levels
-        return rms > rmsThreshold
+//        let rms = calculateRMS(audioBuffer)
+//        let rmsThreshold: Float = 0.02 // Adjust threshold based on noise levels
+//        return rms > rmsThreshold
 
-//        do {
-//            let activity = try vad.processVad(buf: audioBuffer)
-//            print("LocalTranscriptViewModel VAD detected activity: \(activity)")
-//            return activity == VadVoiceActivity.activeVoice
-//        } catch VadAudioError.notInitialized {
-//            print("LocalTranscriptViewModel VAD is not initialized.")
-//            return true
-//        } catch VadAudioError.bufferTooShort(let length) {
-//            print("LocalTranscriptViewModel VAD buffer too short for length: \(length)")
-//            return false
-//        } catch {
-//            print("LocalTranscriptViewModel VAD unexpected error: \(error)")
-//            return true
-//        }
+        do {
+            let activity = try vad.processVad(buf: audioBuffer)
+            print("LocalTranscriptViewModel VAD detected activity: \(activity)")
+            return activity == VadVoiceActivity.activeVoice
+        } catch VadAudioError.notInitialized {
+            print("LocalTranscriptViewModel VAD is not initialized.")
+            return true
+        } catch VadAudioError.bufferTooShort(let length) {
+            print("LocalTranscriptViewModel VAD buffer too short for length: \(length)")
+            return false
+        } catch {
+            print("LocalTranscriptViewModel VAD unexpected error: \(error)")
+            return true
+        }
     }
 
     /// Calculates the Root Mean Square (RMS) of the audio buffer, used for speech detection.
