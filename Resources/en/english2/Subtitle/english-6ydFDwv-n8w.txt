@@ -1,0 +1,239 @@
+"I've been covering this industry a long time, and there is always some new thing that big tech is chasing. First, it was self-driving cars, then it was the Metaverse, and now everyone is all in on AI. There's one big tech giant that's made it clear it's not missing out. So welcome to Microsoft headquarters in Redmond, Washington, where they have made a massive investment in OpenAI. They are already off to the races integrating this new technology, but winning is a totally different story. I'm about to go talk to Microsoft CEO Satya Nadella about why he thinks he can do it. 
+
+Thank you for coming. And I haven't seen you in person in so long. 
+
+I know, it's been ages. Microsoft is a household name that totally revolutionized how we work over 30 years ago: Windows, Word, Excel, PowerPoint. These products turned the software maker into a behemoth, put the big in big tech, and made Microsoft's co-founder Bill Gates and its next CEO, Steve Ballmer, billionaires. But in the nineties, the US government accused Microsoft of being a monopoly. And then the company settled a massive antitrust suit. For over a decade, Microsoft stock flatlined. Then came Satya Nadella, the guy Microsoft hoped would make the company cool again. This company has had three CEOs, they're all right here. Nadella resurrected Microsoft as a power player in the market for business software and cloud computing, then positioned it at the forefront of the AI revolution, largely thanks to a massive investment in OpenAI. Microsoft is now OpenAI's main commercial partner, trading powerful servers and billions of dollars for access to ChatGPT, sparking new life into old products, especially their languishing search engine. 
+
+It's not without its hiccups. We'll talk to OpenAI CEO Sam Altman in a moment, but first, this new AI chatbot is helping Satya in some surprising ways. Have you been playing around with it a lot? 
+
+Yeah. Like fun stuff. Discovery? I am super verbose and polite now in email responses. It's watching. The AI is always watching. It is fun. Like the guy who leads our office team, and I was responding to him, and he was like, "What is this, man? You were like so pleasant." 
+
+Yeah, it's sort of very habit-forming in the sense that once you get used to having chat, even if I'm using it once, because a lot of times I'm just navigating, using search as a navigational tool. But once you get used to it, you kind of feel like I gotta have these rails. 
+
+Microsoft has been working on AI for decades. And chatbots actually aren't anything new, but all of a sudden, everyone is salivating. Why do you think the moment for AI is now? 
+
+AI has been here. In fact, it's mainstream, right? I mean, search is an AI product. Even the current generation of search. Every news aggregation, recommendation, YouTube, e-commerce, or TikTok are all AI products, except they're all, I would say, today's generation of AI is all autopilot. In fact, it's a black box that is dictating, in fact, how our attention is focused. Whereas going forward, the thing that's most exciting about this generation of AI is perhaps we move from autopilot to co-pilot, where we actually prompt it. 
+
+How transformative a change do you think this will be in how we work? 
+
+I think that probably the biggest difference maker will be business chat. Because if you think about the most important database in any company, it's the database underneath all of your productivity software. Except that data is all siloed today. But now I can say, "Oh, I'm going to meet this customer. Can you tell me the last time I met them? Can you bring up all the documents that are written up about this customer and summarize it so that I'm current on what I need to be prepped for?" 
+
+How do you make sure it's not Clippy 2.0, that it is helpful? Delightful. Doesn't wanna make me click out ASAP. 
+
+Once they're under my control, the entire world will be subject to my whims! Go away, your paperclip! No one likes you! 
+
+There are two sets of things. One is, you know—you're laughing, because—'Cause look, like our industry is full of lots of, you know, examples from Clippy to even, let's say, the current generation of these assistants and so on. They all are brittle. I think we are also going to have to learn that ultimately these are tools. Just like anytime somebody sends me a draft, I review the draft; I just don't accept the draft. We will do that. 
+
+In 1995, Bill Gates sent a memo calling the internet a tidal wave that would change all the rules and was gonna be crucial to every part of the business. Is AI that big? 
+
+Yeah, I mean, in fact, I sort of say that ChatGPT when it first came out was like when Mosaic first came out, I think in 1993. And so yes, it does feel like, you know, to the Bill memo in 1995, it does feel like that to me. So it's as big as the internet. I think it's as big. It's just in all of these things, right? We in the tech industry are, you know, classic experts at overhyping everything. I hope, but at least what motivates me is I want to use this technology to truly do what I think at least all of us are in tech for, which is democratizing access to it. 
+
+How much market share do you think you can really take from Google? Like what's your prediction? Give me your gut. 
+
+Look, we are a real, I'm thrilled to be in search. We are a very small player in search, and I look forward to every inch we gain is a big gain. 
+
+You're coming for search, they're coming for office, they're now putting AI in their Google Docs, Sheets, and Gmail. Are we just gonna see you and Sundar trying to one-up each other every week in this race to AI greatness? 
+
+I mean, look, at the end of the day, the fun part of being in this industry and competing is, you know, is the innovation. And competition is, the last time I checked, a fantastic thing for users and the industry. And I think, you know, Google's gonna do, you know, is a very innovative company, and we have a lot of respect for them, and I expect us to compete in multiple categories. 
+
+Microsoft just reportedly laid off a team focused on ethical and responsible AI. Meantime, you've got the Center for Humane Technology calling the race to AI a race to recklessness. How do you respond to that? 
+
+This is no longer a side thing for Microsoft, right? Because in some sense, whether it's design, whether it's alignment, safety, ethics, it's kind of like saying quality, performance, and design. Core design. So I can't have now an AI team on the side, it's all being mainstream. And then I think if anything, debate, dialogue, and scrutiny on what is this pace of innovation, is it really creating benefits for society, I think are absolute. In fact, I'll welcome it. 
+
+And in that context, let's also recognize, especially with this AI, well, why were we not asking ourselves like the AI that's already in our lives, and what is it doing? There's a lot of AI that I don't even know what it's doing, and accept I'm happily clicking away and accepting the recommendations. So why don't we, in fact, educate ourselves to ask all of what AI is doing in our lives and say how to do it safely and in an aligned way? 
+
+I think a lot about my kids and how AI will have something that I don't, which is an infinite amount of time to spend with them. And how these chatbots are so friendly and how quickly that could turn into an unhealthy relationship or, you know, maybe it's nudging them to make a bad decision. 
+
+That's a good point. As a parent, does any part of that scare you? 
+
+So that's kind of one of the reasons why I think this moving from autopilot to this co-pilot hopefully gives us more control, whether it's as parents or more importantly, even as children. We should, of course, be very, very watchful of what happens. But at the same time, I think this generation of bots and this generation of AI probably just go from engagement to giving us more agency to learn. 
+
+I wanna ask about jobs because obviously, Microsoft makes software that helps people do their jobs. And I wonder if AI-laden software will put some people out of jobs. Sam Altman has this idea that AI is going to create this kind of utopia and generate wealth that's gonna be enough to cut everyone a decent-sized check, but eliminate some jobs. Do you agree with that? 
+
+You know, look, I mean, you know, from Keynes to I guess Altman, they've all talked about the two-day work week, and I'm looking forward to it. But the point is, yes, there's gonna be some changes in jobs, there's gonna be some places where there'll be wage pressure, there will be opportunities for increased wages because of increased productivity. We should look at it all, and at the same time, be very clear-eyed about any displacement risk. 
+
+At the center of a potentially tectonic shift in job creation is Sam Altman. He's promised that AI will create a kind of utopia when it joins the workforce, while also raising alarms about the dangers, signing his name to statements warning of the risk of extinction. For many, the upsides of AI are hard to believe. The fear that AI could take their jobs in part led to the prolonged writers' and actors' strike in Hollywood. 
+
+ChatGPT is a moron type of system, a moronic type of system. It doesn't really write great stories. Over the summer, Altman traveled the world to talk about the promise and peril of AI. I caught up with him when he returned to San Francisco at Bloomberg's annual Tech Summit. 
+
+So you've been traveling a ton. 
+
+Yeah. 
+
+What's the like eat, sleep, meditate, yoga, tech routine? 
+
+There was like no meditation or yoga on the entire trip and almost no exercise. That was tough. I slept fine, actually. 
+
+Was the goal more listening or explaining? 
+
+The goal was more listening. It ended up with more explaining than we expected. We ended up meeting many, many world leaders and talked about the sort of the need for global regulation, and that was more explaining. The listening was super valuable. I came back with like a hundred handwritten pages of notes. 
+
+I heard that you do handwritten notes. 
+
+I do handwritten notes. 
+
+What happens to the handwritten notes? 
+
+Well, in this case, like I distilled it into here were the top 50 pieces of like feedback from our users and what we need to go off and do. But there's like a lot of things when you get people in person, like face-to-face or over a drink or whatever, where people really will just like say, you know, here is like my very harsh feedback on what you're doing wrong and what I want to be different. 
+
+You didn't go to China or Russia. 
+
+I spoke remotely in China, but not Russia. 
+
+Should we be worried about them? 
+
+And where they are on AI? Or what they do with it? 
+
+Yeah, I would love to know more precisely where they are. That would be helpful. We have, I think, very imperfect information there. 
+
+So how has ChatGPT changed your own behavior? 
+
+There's like a lot of little ways and then kind of one big thought. The little ways are, you know, like on this trip, for example, the translation was a lifesaver. I also use it if I'm trying to write something, which I write a lot, to never publish, just like for my own thinking. And I find that I write faster and can think more somehow, so it's like a great unsticking tool. 
+
+But then the big way is I see the path towards this just being like my super assistant for all of my cognitive work. 
+
+Super assistant. 
+
+You know we've talked about relationships with chatbots. Did you see this as something that people could get emotionally attached to? And how do you feel about that? 
+
+I think language models in general are something that people are getting emotionally attached to and, you know, I have a complex set of thoughts about that. I personally find it strange. I don't want it for myself. I have a lot of concerns. I don't want to be the kind of people telling other people what they can do with tech, but it seems to me like something you need to be careful with. 
+
+You've talked about how you are constantly in rooms full of people going, "Holy..." 
+
+Yeah. 
+
+What was the last holy moment? 
+
+It was like very interesting to get out of the SF echo chamber, whatever you wanna call it, and see like the ways in which the holy concerns were the same everywhere. And also the ways they're different. So like everywhere people are like, the rate of change is really fast. You know, what is this gonna do to the economy, good and bad? There's change, and change brings anxiety for people. There's a lot of anxiety out there. There's a lot of fear. The comparisons to nuclear, the comparisons to bio weapons. Are those fair or is that overdramatic? 
+
+There is a lot of anxiety and fear, but I think there's way more excitement out there. I think like with any very powerful technology, synthetic, bio, and nuclear, two of those, AI is a third, there are major downsides we have to manage to be able to get the upsides. And with this technology, I expect the upsides to be far greater than anything we have seen. And the potential downsides are also super bad. So we do have to manage through those, but the quality of conversation about how to productively do that has gotten so much better so fast. Like I went into the trip somewhat optimistic, and I finished it super optimistic. 
+
+Yeah. 
+
+So is your bunker prepped and ready to go for the AI apocalypse? 
+
+A bunker will not help anyone if there's an AI apocalypse. But I know that like, you know, journalists seem to really love that story. 
+
+I do love that story. 
+
+I wouldn't overcorrect on like boyhood survival prep. I was a cub scout. I like this stuff. 
+
+Yeah! 
+
+It's not gonna help with AI. 
+
+There's been this talk about the kill switch, the big red button. 
+
+I hope it's clear that's a joke. 
+
+It's clear it's a joke. 
+
+Could you actually turn it off if you wanted to? 
+
+Yeah, sure. I mean, we could shut down our data centers or whatever, but I don't think that's what people mean by it. I think what we could do instead is all of the best practices we're starting to develop around how to build this safely, the safety tests, external audits, internal, external, red teams, lots more stuff, like the way that it would be turned off in practice is not the dramatic, you know, gigantic switch from the movies that cuts the power, blah, blah, blah. It's that we have developed and are continuing to develop these rigorous safety practices and that's what the kill switch actually looks like, but it's not as theatrical. 
+
+There is now a new competitive environment. 
+
+For sure. 
+
+And OpenAI is clearly the front runner, but who are you looking over your shoulder at? 
+
+This is not only a competitive environment, but I think this is probably the most competitive environment in tech right now. So we're sort of like looking at everybody. But I always, you know, given my background in startups, I directionally worry more about the people that we don't even know to look at yet that could come up with some really new idea we missed. 
+
+Mm hmm. 
+
+How would you describe your relationship with Satya Nadella? How much control do they have? 
+
+You know, I've heard people say, you know, Microsoft's just gonna buy OpenAI, you're just making big tech bigger. 
+
+The company's not for sale. Like I don't know how to be more clear than that. We have a great relationship with 'em. I think that these like big major partnerships between tech companies usually don't work. This is an example of it working really well. We're like super grateful for it. 
+
+Have you talked to Elon at all behind the scenes? 
+
+Sometimes. 
+
+What do you guys talk about? 
+
+I mean, it's getting heated in the public. 
+
+Yeah, I mean we talk about like a super wide variety of important and totally trivial stuff. 
+
+Why do you think he's so frustrated or kind of— I mean, it's almost, there's some attacking going on in a way. 
+
+You should ask him. I would like to know. I'd like to better understand it. I don't think this is in the top hundred most important things happening related to AI right now, for what it's worth. 
+
+Is there any aspect of our lives that you think AI should never touch? 
+
+My mom always used to say never say never, never say always. And I think that's like generally good advice. If I made a prediction now, I'm sure it could end up being wrong in some subtle way. I think AI is going to touch most aspects of our lives, and then there will be some parts that stay surprisingly the same. But those kind of predictions are humbling and very easy to get wrong. 
+
+What do you think kids should be studying these days? 
+
+Resilience, adaptability, a high rate of learning, creativity, certainly familiarity with the tools. 
+
+So should kids still be learning how to code? 'Cause I've heard people say, don't need to learn how to code anymore. Just math, just biology. 
+
+Well, I'm biased, 'cause I like coding, but I think you should learn to code. I don't write code very much anymore, although I randomly did yesterday. But learning to code was great as a way to learn how to think. And I think coding will still be important in the future. It's just gonna change a little bit or a lot. 
+
+We have a new tool. What are we all gonna do when we have nothing to do? 
+
+I don't think we're ever gonna have nothing to do. I think what we have to do may change, you know, like what you and I do for our jobs would not strike people from a few thousand years ago as real work, but we found new things to want and to do and ways to feel useful to other people and get fulfillment and create. And that will never stop. But probably I hope you and I look, you know, if we could look at the world a few hundred years in the future, be like, wow, those people have it so good. I can't believe they call this stuff work. It's so trivial. 
+
+So we're not gonna be all just laying on the beach eating bonbons. 
+
+Some of us will, and more power to people who want to do that. 
+
+Do you think in your heart of hearts that the world is gonna be more fair and more equitable? 
+
+I do. I do. I think that technology is fundamentally an equalizing force. It needs partnership from society and our institutions to get there. But if we can, like my big picture, highest level, like zoom all the way out, view of the next decade is that the cost of intelligence and the cost of energy come way, way down. And if those two things happen, it helps everyone, which is great, but I think it lifts up the floor a lot. 
+
+So where do you wanna take OpenAI next? 
+
+We want to keep making better and better, more capable models, and make them available more widely and less expensively. 
+
+What about the field of AI in general? 
+
+There's many people working on this, so we don't get to take the field anywhere, but we're pretty happy with our contribution. Like we think we have nudged the field in a way that we're proud of. So we're working on new things too. 
+
+What are the new things? 
+
+They're still in progress. 
+
+Is there room for startups in this world? 
+
+Totally. I mean, we were a startup not very long ago. 
+
+But you're almost already an incumbent. 
+
+Of course. But when we started, like you could have asked the same question. In fact, people did. In fact, I myself wondered, like, is it possible to take on Google and DeepMind, or have they already won? And they clearly haven't. 
+
+Yeah, like I think there's a lot, it's always easy to kind of count yourself out as the startup, but startups keep doing their thing. 
+
+Well, nobody's counting you out, so I guess that's a good thing. 
+
+I guess so. 
+
+The one and only person who's gonna be deciding our futures. 
+
+I don't think so. 
+
+So you have been everywhere in like the last few months. 
+
+That was a long trip. It's like a very special experience to just go talk to people that are users, developers, also world leaders interested in AI like all day, every day for so long. 
+
+In the middle of all this, you signed a 22-word statement warning about the dangers of AI. It reads, "Mitigating the risk of extinction from AI should be a global priority alongside other societal-scale risks such as pandemics and nuclear war." Connect the dots for us here. How do we get from a cool chatbot to the end of humanity? 
+
+Well, we're planning not to. That's the hope, but there's also the fear. I mean, I think there's many ways it could go wrong, but we work with powerful technology that can be used in dangerous ways very frequently in the world. And I think we've developed over the decades good safety system practices in many categories. It's not perfect, and this won't be perfect either; things will go wrong. 
+
+The main thing that I feel is important about this technology is that we are on an exponential curve and a relatively steep one. And human intuition for exponential curves is like really bad in general. It clearly was not that important in our evolutionary history. And so I think we have to, given that we all have that weakness, I think we have to like really push ourselves to say, okay, GPT-4, you know, not a risk like you're talking about there, but how sure are we the GPT-9 won't be? And if it might be, even if there's a small percentage chance of it being really bad, like that deserves great care. 
+
+And if there is that small percentage chance, why keep doing this at all? Like why not stop? 
+
+I mean, a bunch of reasons. A, I think that the upsides here are tremendous. You know, opportunity for everyone on earth to have a better quality education than basically anyone can get today, that seems like really important. And that'd be a bad thing to stop. Medical care, and what's I think gonna happen there, and making that available like truly globally. That's gonna be transformative. The scientific progress we're gonna see. I'm a big believer that like real sustainable improvements in quality of life come from scientific and technological progress, and I think we're gonna have a lot more of that. 
+
+So there are all the obvious benefits, and you know, I think it'd be good to end poverty, but we gotta manage through the risk to get there. 
+
+I also think at this point, given how much people see the economic benefits and potential, no company could stop it. 
+
+I think even you would acknowledge you have an incredible amount of power at this moment in time. Why should we trust you? 
+
+You shouldn't. Like, you know, I don't, as you've known me for a long time, public talking, like I'd rather be in the office working. But I think at this moment in time, people deserve basically as much time asking questions as they want, and I'm trying to show up and do it. But more to that, no one person should be trusted here. The board can fire me; I think that's important. I think the board over time needs to get like democratized to all of humanity. There's many ways that could be implemented. We think this technology, the benefits, the access to it, the governance of it belongs to humanity as a whole. If this really works, it's quite a powerful technology. You should not trust one company and certainly not one person with it."

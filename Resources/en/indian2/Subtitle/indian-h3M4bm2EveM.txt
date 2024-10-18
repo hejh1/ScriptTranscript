@@ -1,0 +1,47 @@
+"AI will pretty much touch everything we do. It's more likely to be correct and grounded in reality. Talk to the AI about how to do better; it's a very deep philosophical conversation. It's a bit above my pay grade. Awesome, Cind, it is such a pleasure to meet you. It's likewise. Thank you for doing it. Just like you, I love AI. I love talking about AI, so I think no surprise today I'm definitely going to delve into that with you. With so many AI tools coming out these days and so much going on, I mean the shift of AI in the space of a year has been insane. A lot of people feel like if they don't start using AI, if they don't understand AI, they are going to be left in the dust. So why should people start using Google's AI? 
+
+Look, I think for multiple reasons. To start with, it makes your experience better, right? I think using AI is going to summarize things for you; it's going to save you time. Now you can type a much more complex question, like, 'Find me exercise studios within 4 miles of where I live and open at these hours,' and it kind of summarizes an answer for you. So it just makes your life a bit easier. That's the primary way we’re putting AI in our product. 
+
+Yeah, AI is going to be in our lives across everything we do. Learn to understand where it's good at and what the pitfalls are. So I think there’s a part of getting familiar with the new technology too, so you want to do it for both reasons. Amazing! I'm sure you're aware of the competitors, like Co-Pilot and ChatGPT. What makes Gemini or Google's AI better than the competitors? 
+
+I think a few things. The way we integrate with Google Search and other Google products, for example, it can summarize your emails in Gmail, and you can easily send off an email from Gmail. So it's very well integrated with the rest of your Google products. And so I think including YouTube, right? Yes, yes. So it's multimodal. Over time, you'll be able to use voice; you can point it at things. I think that’ll be an area where it's differentiated as well. At Google, over many years, we’ve built a vast understanding of the world. So you can go to any chatbot and ask, 'Help me plan a trip,' but they can hallucinate. 
+
+Okay, but what Google can do in Gemini is ground it in the way we have built our understanding of the world over the years. So when we say 'go from Place A to B,' it's more likely to be correct and grounded in reality. With Gemini, and even something like Virtual Team, it feels as though AI almost has a consciousness sometimes. Do you think it'll be much longer until there is some form of AI consciousness that we see, like a real form of it? 
+
+You know, obviously consciousness is a deep topic, and it's something that is not yet fully understood. We all feel it; we all perceive it. So I think there's a difference between what it means to be truly conscious AI versus can AI appear conscious. I think in the next few years, we will clearly have AI that will give you all semblance of being conscious, and you may not be able to differentiate. But I think that's a very different question from whether it is actually conscious. 
+
+Yeah, yeah, which is a more profound question, and it's a very deep philosophical conversation. You know, like, how do I know you are conscious? Right? Like, I mean, how do I have a way of knowing it? So I think, you know, it's a bit above my pay grade, I think, to answer that question. 
+
+Yeah, I think you're right. It's quite an interesting topic that could go on for days, actually. And so for the people who do use these AI tools and who do adopt them, whether it's in work or just their day-to-day life, for those people and the general public, what do you think AI is going to look like for them in the next 5 to 10 years? 
+
+I think you're going to have some AI that you can talk to or ask to help, and it's going to be available for you right at your fingertips. If you're in Google Docs and you're typing something, it corrects your spelling and grammar. You take it for granted, but AI is going to be there like that for pretty much everything you do in your life. You know, you may be getting ready for an interview, and you would just talk to the AI about how to do better, right? And it won't even seem strange to you that you're going to do that. 
+
+So that notion, you know, we showed glimpses of it with Project Astra today, right? And the fact that there's an AI—it's based on a multimodal model, so it can see what you see. Yeah, you can talk; you can ask it to reason about the world. And remember, it's just at the early stages, and these things are going to progress pretty fast. 
+
+Yeah, so it sounds to me like you're saying it's almost going to be more magical and in more people's hands, so to speak. 
+
+Yeah, I like that. So for the people who, let's say, don't adopt AI and don't start using it, what do you think the future looks like for them? 
+
+You know, you want to try these things, use a chatbot, whatever you prefer, right? And learn to interact with them. You know, people can express themselves in a variety of ways, but I think you will have a leg up if you can understand the technology. Right? I mean, it's an important change that's happening at a faster pace than previous technologies. So learning, becoming familiar with it, learning how to use it, you know, I think will give you a leg up. 
+
+With Gemini now coming out, I've seen that when going on Pixel devices, you're prompted to now change from Google Assistant to Gemini. So is Google Assistant fading away? 
+
+The right way to think about it is over time you'll have Gemini powering Google Assistant. Right? They will become one and the same thing as we go through this transition. Gemini can do everything Google Assistant can do; it's going to be there right at your fingertips to help you. 
+
+Now that Gemini is on Pixel devices, what do you think people are primarily going to use it for? Like, I'm sure you've got user data already about what people are using it for the most. So what do you think that's going to be? 
+
+You predominantly see people asking it for ideas, right? I think the most common way we see people using it is they want somebody to brainstorm with them. Right? I found myself using, 'Hey, what should I do for Mother's Day?' Sometimes you're just trying to understand something very quickly. I'm like, 'Hey, Gemini, is this food gluten-free?' Right? And in a world with Project Astra, that gets easier. You can ask Gemini to look at the food, and it can answer it for you. 
+
+I think people are using it pretty broadly across different types of needs, and I think people are getting more and more familiar and comfortable with the technology. So yeah, it feels full of possibilities. 
+
+Yeah, so more day-to-day kind of things, like you say, more ideas. I like that about, you know, kind of Mother's Day or gift ideas or excursions. 
+
+Yeah, but I think, like you saw today, you know, people may want to go to a place, and they say, 'Well, what should I do for a week?' We're going to make it much easier; we're going to try and help you plan that. And those are the kinds of new features we're bringing into Gemini. Absolutely, but there's a lot we can do more. 
+
+My final question is, what is your hope for AI in the future? Like, where do you hope this ends up going in the end? 
+
+I think the biggest way we hope is for what looks like a technology to be just infused in a way that makes our lives better. We can clearly see it in the context of an assistant, but the fact we're using the same AI to make your car self-driving in the same way, right? Or using AI to better discover drugs that can target difficult diseases. So you should view it, you know, I've compared it in the past to electricity or fire. You know, I call it more profound than that. You know, you want to think about it in that deep, fundamental way. And just like today, you don't think about electricity—it's there everywhere. AI will pretty much touch everything we do, and you know, it has a lot of potential to make things better. There are obviously pitfalls, which we need to be careful about and make sure we tackle them. 
+
+I wish I could spend the whole day talking to you about AI. I feel excited about the future just because of what Google is doing and Google's AI products. So yeah, thank you for that. 
+
+All right, thanks, I appreciate it. Take care."

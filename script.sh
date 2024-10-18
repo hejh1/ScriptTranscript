@@ -8,9 +8,11 @@ echo $work_dir
 modelPath=$work_dir"/Resources/ggml-base.bin"
 audioPath=$work_dir"/Resources/audioFiles/"
 outputPath=$work_dir"/Resources/audioTranscript/"
-language='auto'
+language='en'
 accent='false'
 gpu='true'
+
+pathList=("asian" "asian2" "indian" "indian2" "english" "english2")
 
 while [ $# -ge 1 ] ; do
         case "$1" in
@@ -24,12 +26,6 @@ while [ $# -ge 1 ] ; do
         esac
 done
 
-if [ $accent == 'true' ]
-then
-  audioPath=$work_dir"/Resources/accentAudioFiles/"
-  outputPath=$work_dir"/Resources/accentAudioTranscript/"
-fi
-
 cd ./copilot
 git checkout main
 git pull
@@ -37,12 +33,18 @@ cd ../
 cp ./copilot/InterviewCopilot/ViewModels/LocalTranscriptViewModel.swift ./ScriptTranscript/
 
 xcodebuild -scheme ScriptTranscript -configuration Debug -derivedDataPath ./Build
-audioFiles=$(ls $audioPath | grep '.wav')
-for file in $audioFiles
-do
-  echo $file
-  txt=${file%.*}'.txt'
-  echo $txt
-  ./Build/Build/Products/Debug/ScriptTranscript $modelPath $audioPath$file $outputPath$txt $language $gpu
+for path in "${pathList[@]}"; do
+    echo "Path: $path"
+    audioPath=$work_dir"/Resources/"$language"/"$path"/Files/"
+    transcriptPath=$work_dir"/Resources/"$language"/"$path"/Transcript/"
+    echo "$transcriptPath \n"
+    audioFiles=$(ls $audioPath | grep '.wav')
+    for file in $audioFiles
+    do
+      echo $file
+      txt=${file%.*}'.txt'
+      echo $txt
+      ./Build/Build/Products/Debug/ScriptTranscript $modelPath $audioPath$file $transcriptPath$txt auto $gpu
+    done
 done
 

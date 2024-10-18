@@ -20,8 +20,9 @@ Copy model and audio file in `./Resources`. Copy auido files in `./Resources/aud
 ./script.sh
 ./script.sh --a=true --l=en
 
-// install jiwer
+// install requirment
 pip3 install jiwer
+pip3 install html-table
 
 // wer rate
 python3 calc_wer.py

@@ -4,3 +4,10 @@ Resources/audioTranscript/*.txt
 *.mp4
 Resources/compare/
 Resources/accentAudioTranscript/*.txt
+Resources/asianTranscript/*.txt
+Resources/asian2Transcript/*.txt
+Resources/indianTranscript/*.txt
+Resources/indian2Transcript/*.txt
+Resources/englishTranscript/*.txt
+Resources/english2Transcript/*.txt
+audio_jiwer.html
