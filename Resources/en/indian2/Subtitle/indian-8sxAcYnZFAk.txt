@@ -1,41 +1,223 @@
-Sund, thank you so much for having me. It's an absolute honor to be here. I've seen so many keynotes of yours, right, like through the screen, and it's a fanboy moment for me to be here, you know, with you right across from me. Let me just get started. I think somebody here mentioned that this is AI Coachella, and it felt like AI Coachella Madness, right? So many new things that came out. The engineer and the creator in me are super excited. But I come from India, and I feel like, you know, it feels like this is an AI race, and Silicon Valley is moving really fast. I feel you're sort of getting left behind if you were an engineer back home in India or you were an entrepreneur there. What would you do to keep up?
-
-Well, first of all, good to talk to you, Aron, and congrats on a great channel and the work you do. Look, I see it a bit differently when I think about AI, even as Google thinks about AI. For us now, India is one of our top markets. Right now, we have both for many of our products—it's our largest user base. We have large teams in India, so we've been thinking about AI in the context of India. The second is, unlike past technologies, the underlying APIs for AI are available everywhere, including India. So, I see developers already using it. I think India is well positioned. 
-
-In terms of me, what AI offers is for anyone to use it and build applications and solve problems. So, I think, to me, for India, this is a moment. India has an extraordinary base of developers and engineering talent. For them to understand this trend and build applications in a way that makes sense either for India or for the world from India, I think both are exciting possibilities. So, I would view it that way. From a Google perspective, I'm excited because one of the things we are doing with AI is really breaking barriers. 
-
-I think the fact that all our new models are multimodal, so they can reason across text, images, and video, means the way it'll come to India is that you could be watching any video you want in any language, even if that content didn't exist in your language. People can just look at things and ask questions. So, that is the future. If anything, I view it as part of continuing to help digital India—getting more and more people there comfortable with technology and giving them access to technology. I think it's huge.
-
-You were talking about software engineers. I don't know if you know this, but there's an entire industry in India built to help young Indians crack the FAANG interview. These are generally very smart kids, but unfortunately, they are just glazing over the fundamentals and rote learning data structures and algorithms. I don't know if you've heard of this. Now they see a big shift coming, right? Gemini can write code; you'll have a pair programmer available pretty quickly. Do you have advice for these people? How do you get out of the competitive exam mindset with all these shifts coming about?
-
-I think it's a great question. I hope—I think real success comes from understanding things in a deeper way, right? I'm almost tempted to go back to the movie "Three Idiots" or something like that. There's a scene in there, I think, when they ask Aamir Khan the definition of a motor. There is a version where you just describe what a motor is, and there's a version where you actually understand what a motor is. So, I view it the same way. It quite doesn't change; you have to understand the technology in a deeper way. If you do, you can transition, you can do things. Programming languages may change; the tools you use may evolve, but your understanding of the stack in a much deeper way is what I would encourage people to do. 
-
-Always, programming is going to get easier in a way that's better. You know, all of us are already thankful we don't have to write assembly code. We are used to higher-level abstractions. AI will help, but even higher-level abstractions—you're going to use natural language. You're going to tell sometimes, "Hey, can you just debug this code for me and explain what happened?" and it'll do it. It's just going to make you a better programmer. So, I think it's more important to go deeper rather than trying to learn the thing of that moment.
-
-Yeah, interesting. And you know, I don't know if you spent time on Twitter recently, but a lot of people—there's a word for startups being built on top of models like Gemini, right? It's kind of derogatory in nature. It's called a "wrapper startup." You've heard of wrapper startups, right? Do you have thoughts on that? I feel like if you build for use cases, it should be commercially viable, but I'd love to hear it from you.
-
-There are going to be APIs, and people are going to use APIs. I think that is the way things will get built. So, you know, it's not bad to be a wrapper; you just shouldn't be a shallow wrapper. I think you have to think about where the models are going and make sure you aren't doing something that just in the next version of the model will be done natively by the model itself. Got it. That will have a short shelf life. But if you're using AI to solve a real-world use case in a way that involves a few more things you're doing or chaining multiple models together, you have to think about the value you're adding on top of the model in whatever way—chaining multiple things together—and also think about the forward curve of the models and make sure the models just aren't going to do that. So, I think it's a combination of both of them.
-
-Yeah, that's actually a very profound way to look at it, right? The value on top of the model is what people will eventually pay for. I started a company this year; it was called AOS, and we were looking for problem statements. We said models are going to be a dime a dozen; some are going to be open source, and you've actually contributed to open source quite a bit, right? One of the things we realized—and I don't know who to attribute this score to—but hallucination seems to be a bug for tasks that require accuracy. But it seems to be a feature for creative endeavors. Slowly, we found that even our client base sort of wanted us to help them with creative endeavors. Have you seen more enterprise adoption by creative companies?
-
-Very much so, right? I think particularly as people are thinking about, like, marketing campaigns, for example. We have good projects underway with creative agencies and advertising agencies where they actually want to push the frontier. You know, there are two ways you can imagine using it: using it to just take the mundane tasks and make it easier, but there are also people who want these models to come up with things that otherwise they wouldn't have done. There, you're exactly right; I think hallucination is a feature, not a bug, and that's the way I would think about these models for that purpose. 
-
-If you go back to the AlphaGo game, there was a moment in which the model moved 37, I think, when it made that move which no human prior to it had done before, right? It was a creative, intuitive way of playing the Go game, and that's what you hope these models will do because they think in an unconstrained way. 
-
-So, Google got into a little bit of trouble recently with generating historical characters with some racial inaccuracies. Now, I feel like typically that should have stopped a company like Google or at least really slowed it down, and it definitely has slowed down some of your competitors who are no longer shipping publicly usable products. But I feel it's not stopped you this time. Today, everyone on the Internet is a critic. Even if you do your best work and really put intent behind it and are being transparent about everything, people are complaining. Do you feel like just the number of people complaining on the Internet has gone up, and that's also given you cover to be bold?
-
-We spoke about it last year at Google I/O. We encapsulated it as being bold and responsible. I think, you know, with a technology like that, which is developing fast but is still immature, you have to ride the curve where you're pushing, but you also have to be responsible. There is some tradeoff, and you're trying to find that optimal point. But I think there's a lot of user excitement, so that's what is guiding us to say people are ready for it, right? We are rolling out AI overviews in Search; people are really embracing it and responding to it. So, I think people are finding it helpful, which gives us the confidence that we are in the right direction. 
-
-So, which is why you see us moving fast, but there'll be moments when we feel, "Okay, maybe this technology—it's important to spend more time getting this right," so we'll balance it. But on the balance, we are moving boldly. 
-
-Yeah, I'm very long-term bullish on Google. I think LLMs— I mean, a lot of this is going to get commoditized, but you own the means to distribution: YouTube, Chrome, Android. So, thank you so much for doing all you do. Like I said, it's been an honor.
-
-Well, likewise! I greatly enjoyed it. Thanks. 
-
-[Music] 
-
-Food in India—what's your favorite food? 
-
-Well, in Bangalore, I will probably get a dosa. It's my favorite food. If it is Delhi, a chole bhature. And if it's Mumbai, I'll do a vada pav. 
-
-Nice! All right, thank you so much.
+Sundar, thank you so much for having me.
+It's an absolute honor to be here.
+I've seen so many keynotes of yours, right?
+Like through the screen.
+And it's a fanboy moment for me to be here, you know,
+with you right across me.
+And let me just get started, right?
+I think somebody here mentioned that this is AI Coachella.
+And it felt like AI Coachella madness, right?
+So many new things that came out.
+The engineer and the creator in me is super excited.
+But I come from India.
+And I feel like, you know, it feels like this is an AI race.
+And Silicon Valley is like moving really fast.
+I feel just sort of getting left behind.
+If you were an engineer back home in India,
+or you were an entrepreneur there, what would you do to keep up?
+Well, first of all, good to talk to you, Varun.
+And congrats on a great channel and the work you do.
+Look, I see it a bit differently when
+I think about AI, even as Google thinks about AI.
+For us now, India is one of our top markets, right?
+We have both for many of our products.
+It's our largest user base.
+We have large teams in India.
+So we've been thinking about AI in the context of India.
+The second is, unlike past technologies,
+the underlying APIs for AI are available everywhere,
+including India.
+So I see developers already using it.
+So I think India is a well-position.
+I think in terms of what AI offers
+is for anyone to use it and solve build applications
+and solve problems.
+So I think to me, for India, this is a moment.
+India is an extraordinary base of developers, engineering talent.
+So for them to understand this trend
+and build applications in a way that makes sense
+either for India or for the world, from India,
+I think both are exciting possibilities.
+So I would view it that way.
+From a Google perspective, I'm excited
+because one of the things we are doing with AI
+is really breaking barriers.
+I think the fact that all our new models are multimodal,
+so they can reason across text images video.
+So which means the way it'll come to India
+is you could be watching any video,
+you want in any language, even if the content was not,
+didn't exist in your language.
+Or people who can just look at things and ask questions.
+So that is the future.
+So if anything, I viewed as part of continuing
+to help digital India, getting more and more people there,
+comfortable with technology and giving them access to technology.
+So I think it's huge.
+And you would talk about software engineers.
+I don't know if you know this, but there's
+an entire industry in India built to help young Indians crack
+the FAANG interview.
+And these are generally very smart kids.
+But unfortunately, they're just glazing over the fundamentals
+and then road learning, data structures and algorithms.
+I don't know if you've heard of this.
+And now they see a big shift coming.
+Gemini can write code, you'll have a pair program available
+pretty quickly.
+Do you have advice for these people?
+How do you get out of the competitive exam mindset
+with all these shifts coming about?
+I think it's a great question.
+I hope, I think real success comes from understanding things
+in a deeper way, and almost tempted
+to go back to the movie 3 Idiot, or something like that.
+And there's a scene in there, I think,
+when they ask Aamir Khan of a motor.
+And there is a version.
+You just describe what a motor is.
+And there is a version where you actually
+understand what a motor is.
+So I view it the same way, it quite doesn't change.
+You have to understand the technology in a deeper way.
+If you do, you can transition, you can do things.
+Programming languages may change.
+The tools you use may evolve, but you're
+understanding the stack in a much deeper way.
+So that's what I would encourage people to do always.
+Programming is going to get easier in a way that's better.
+All of us are already thankful.
+We don't have to write in assembly code.
+Or we are used to higher level abstractions.
+AI will help with even higher level abstractions.
+You're going to use natural language.
+You're going to tell some time.
+Hey, can you just debug this code for me
+and explain what happened, and it'll do it?
+It's just going to make you a better programmer.
+So I think it's more important to go deeper,
+and I'm trying to learn the thing of that moment.
+Yeah, interesting.
+And I don't know if you've spent time on Twitter recently,
+but a lot of people, there's a word for startups being built
+on top of models like Gemini, right?
+It's kind of derogatory in nature.
+It's called a wrapper startup.
+You heard of wrapper startups, right?
+Do you have thoughts on that?
+Like, I feel like if you build for use cases,
+it should be commercially viable, but we'd
+love to hear it from you.
+There are going to be APIs, and people
+are going to use APIs.
+I think that is the way things will get built.
+So it's not bad to be a wrapper.
+You shouldn't be a shallow wrapper where--
+I think you have to think about where the models are going,
+and make sure you're doing something
+with just in the next version of the model.
+It will be done natively by the model itself.
+Got it.
+That will have a short shelf life.
+But if you're using AI to solve a real-world use case
+in a way which involves a few more things you're doing,
+or training multiple models, you have
+to think about the value you're adding on top of the model
+in whatever way, changing multiple things together,
+and also thinking about the forward curve of the models
+and make sure the models just aren't going to do that.
+So I think it's a combination of both of them.
+That's actually a very profound way to look at it, right?
+Like, the value on top of the model
+is what people will eventually pay for.
+I started a company this year.
+It was called AEOS.
+And we were sort, we're looking for problem statements.
+We said models are going to be dime a dozen,
+and some are going to be open source.
+And you've actually contributed open source quite a bit, right?
+And one of the things we realized--
+and I don't know who to attribute this quote to,
+but hallucination seems to be a bug for things,
+for tasks that require accuracy.
+But it seems to be a feature for creative endeavors.
+And so slowly, we found that even our client base sort of--
+they wanted us to help them with creative endeavors.
+Have you seen more enterprise adoption
+by creative companies?
+Very much so, right?
+I think particularly as people are thinking about marketing
+campaigns, for example, we have good projects underway
+with creative agencies, advertising agencies,
+where they actually want to push the frontier.
+There are two ways you can imagine using it,
+using it to just kind of take the mundane tasks
+and make it easier.
+But there are also people who want these models
+to come up with things, which otherwise they wouldn't have done.
+And there, you're exactly right.
+I think hallucination is a feature, not a bug, right?
+And that's the way I would think about these models
+for that purpose.
+And if you go back to the AlphaGo game,
+there was a moment in which the model moved 37, I think.
+Yeah, when it made that move, which no human prior to it
+had done before, right?
+It was a creative, intuitive way of playing the Go game.
+And that's what you hope these models will do,
+because they think in an unconstrained way.
+So Google gone to a little bit of trouble recently with--
+you were generating historical characters
+with some racial inaccuracies.
+Now, I feel like typically that should have stopped a company
+like Google, or at least really slowed it down.
+And it definitely has slowed down some of your competitors,
+and no longer shipping publicly usable products.
+But I feel it's not stopped to you this time.
+And I feel, today, everyone on the internet is a critic.
+Even if you do your best work, and you really
+put intent behind it, and you're being transparent about everything,
+people are complaining.
+Do you feel like just the number of people
+complaining on the internet has gone up?
+And that's also given you air cover to ship boldly.
+When we spoke about it last year at Google I/O. We framed, you know,
+We encapsulated as being bold and responsible.
+And I think with a technology like that,
+which is developing fast, but it's still immature,
+you have to ride the curve where you're pushing.
+But you also be as responsible.
+But there is some trade-off.
+And you're trying to find that optimal point.
+But I think there's a lot of user excitement.
+So that's what is guiding us to say,
+people are ready for it.
+And we are rolling out AI overviews in search.
+People are really embracing it and responding to it.
+So I think people are finding it helpful.
+So that gives us the confidence that we are in the right direction.
+And so which is why you see is moving fast.
+But there'll be moments when we feel, OK, maybe this technology--
+it's important to spend more time getting this right.
+So we'll balance it.
+But on the balance, yes, we are moving boldly.
+I'm very long term bullish on Google.
+I think LLMs-- I mean, a lot of this
+is going to get commoditized.
+But you own the means to distribution, YouTube, Chrome,
+Android.
+So thank you so much for doing all you do.
+And like I said, it's been an honor.
+Well, likewise, Varun.
+Greatly enjoyed it.
+Thanks.
+Food in India, what's your favorite food?
+Well, it's Bangalore.
+I will probably get a dosa.
+OK.
+It's my favorite food.
+If it is Delhi, it's Cholly Bhatura.
+And if it's Mumbai, I'll do a Pav Bhaji.
+Nice.
+All right.
+Thank you so much.

@@ -1,33 +1,165 @@
-We now shift focus to Quick Heal. The stock has been a doubler on a year-to-date basis and has risen over 10% on a monthly basis as well, due to its various product launches. However, it's under pressure today. We spoke to the Chief Executive Officer, Vishal Salvi, about the recent launch of Anti-Fraud. Let's listen to what he had to say. 
-
-"Yeah, so this is a completely new category of product that we have launched after three decades in the cybersecurity industry. You know, having a very flagship product of antivirus, which is for B2C, we have now launched an antivirus-related product, but this is basically into anti-fraud. It addresses the issue of the growing problem of frauds that are happening because of rapid digitization. This is the first time, actually, in three decades that we're creating a second category in our B2C product. Of course, we have great expectations in terms of how this will be adopted, and given that it is something completely new in the Indian market, we expect that we will add significant value in terms of protecting customers from falling victims to the growing frauds."
-
-"Right, but can you just talk to us about how this might add to your revenue top line? Will it take time, or what quarter is this scheduled for?"
-
-"It has already started. In the sense that we've already started dispatching the inventory to all our partners and resellers, and we have had a global plan India launch across each of the regions where there has been very good participation from our partners to see the demand that can grow. So, for all practical purposes, it's already now launched and we'll start getting revenues recorded from this quarter onwards."
-
-"Right, got that. Okay, let me move on to talking about the revenue mix. Your focus gradually has been moving towards enterprise customers from the consumer-based category. For example, it was 20-80 in FY21, and in the recent quarter, it has been around 43-57%. So can you tell us more about how this enterprise business is looking out for you? Is it more margin-active, and why such a shift? What are your future plans?"
-
-"Quick Heal has been a pioneer in cybersecurity and antivirus for many years. It has stood the last three decades of innovation and changes which have happened, and we have a market position in terms of all the products that we have in B2C. It was natural that we pivot towards enterprise security because there's a significant amount of growth in terms of the overall market that is growing as far as enterprise security is concerned. Also, there are so many avenues to create value addition and different solutions that are coming up in the market. So, Quick Heal has created an enterprise brand called Secure. In that, we have different product sets in terms of protection, detection, and prevention. We have a host of these solutions that we have introduced in the market, and we believe that's where the future growth will lie as far as the company is concerned. Investments have been happening for over the past seven or eight years, and we are now at a position where we are able to see the benefits of that growth, which is where you can see that 40% of our revenues are coming from enterprise, and it's growing on a quarter-on-quarter basis."
-
-"Right, okay. So let me talk to you about the margins. One doubt I had is when you move to the B2B business, don't you think your negotiating power in terms of B2B business will go down because of the competition over there?"
-
-"Yeah, I think the market is fairly large. It is growing. The problem related to cybersecurity is only increasing because of the way in which we're adopting digital, cloud, AI, data, and so many regulations coming in. Obviously, organizations are facing a significant challenge, and there are many organizations that have adopted it, and many more organizations that are yet to adopt it. So I think the market is fairly large; there is still an untapped segment of customers who have not yet adopted cybersecurity in a holistic manner. We are the only Indian 'Make in India' story, and from that point of view, there's a humongous opportunity for a company like us who have been at the forefront of creating these solutions for many years. Now, we are really investing in various solutions for enterprise. So we do believe that we have a huge amount of play as far as the market is concerned. Also, I think enterprise business has great margins, and there's a lot of predictability and consistency in terms of collections and other things. Therefore, I think it's a business that we believe is going to help us grow and scale the company to a different level altogether."
-
-"Right, so as you said, the enterprise business is more margin-accretive. Can you just maybe qualify it in terms of a number?"
-
-"Yeah, we have not shared these details publicly, and right now we are in a silent period, so I won't be able to share much. But having said that, one of the things I can definitely share is that we believe, and we have seen and observed, that the enterprise business gives us better collections, better margins, and obviously better skin. It's definitely an area where we are going to double down. We are investing significantly in innovation. We have one of the largest malware labs in the country, if not in this region as well. We are doing a lot in terms of adding new solutions. We have already released Horizon 2 products, and now we are in the process of releasing Horizon 3, which involves new technologies and new solutions that are going to come in the future for enterprises."
-
-"Right, okay. So what kind of mix do you see going forward for the enterprise and consumer? Do you see like a 50/50 or even more coming from the enterprise?"
-
-"Well, definitely it's going to be crossing 50 very soon, at the rate at which we are growing. We moved from 20-80 to already 40-60. Clearly, if you look at the market, it's 95% to 5% in the split between enterprise and consumer globally, so obviously that's a potential that we have in terms of how we can grow and start getting our share. Of course, we are new to pivoting to enterprise security, and we have a way to go in terms of how we catch up there. But all the trends that we have seen in the last five or six quarters show that we are consistently growing our enterprise business, and that will continue to happen while we continue to strengthen our B2C and consumer business. The fact that we are now launching a new category of anti-fraud, which is very different from antivirus, demonstrates that we continue to also focus on our core, which is our consumer business."
-
-"Right, got that. Very interesting part on how you want to scale up the enterprise business. But let me talk to you about the Microsoft outage that happened recently. Do you look at outages like this as an opportunity to pitch your solution to enterprises and customers? Give me some insight on how this can pose an opportunity for you."
-
-"I think one thing that the Microsoft Crowdstrike outage has highlighted is the widespread importance of cybersecurity solutions in today's digital world. You can imagine that one product going down can cause such a big impact on the world and the global markets. It's a very important responsibility that every vendor, not just a cybersecurity vendor but any vendor, has in terms of making sure that the products are efficient, are working, and do not create a denial of service to its customers. This incident gives us an example of the importance of how software updates that you release on your endpoints need to be tested properly before they are released to the market. Clearly, this is one example of how something can go wrong, and the world should know about it. If it can happen to anyone, we don't want to just criticize it, but I think we can learn from this. At the same time, we are extremely proud and happy to say that Quick Heal, in its history, has never faced such a challenge. We manage 9 million endpoints across the globe, and we have never had a blue screen or that kind of issue for so many years. We have a very robust testing methodology, and we will continue to do that. We always look for opportunities to how our products can add value to our customers, and we are seeing a strong uptake as far as that is concerned in the Indian context right now for enterprise business. Every situation creates an opportunity for us, and in this case, our customers were happy that they never faced this problem because they were using our software."
-
-"Right, got that. Very interesting. Of course, customers would now be more aware of how important software security is. But one last question, because of the crunch of time. Quick Heal has done immensely well, given more than 150% return in the last one year. What are your modes that you're looking forward to in the near term, at least for the next three to four quarters, for our viewers?"
-
-"I think we have done well since the time I came on board as CEO of Quick Heal. Some of the changes that we are doing involve strengthening our leadership. We've hired various leaders from different parts of the industry, and we're happy that we've been able to attract them. It is giving us clear momentum in terms of how we want to execute our strategy as far as sales is concerned. We are re-energizing and reinventing our sales motion for enterprise sales. There's a significant amount of addition not just at the senior but also at the mid-management level for our enterprise sales. Thirdly, we are committed to our product roadmap. Quick Heal has been at the center of innovation; we have nine patents across cybersecurity, which many people are not aware of, and we are extremely proud of being an Indian company with nine cybersecurity patents. The foundation of our company is innovation, and the malware lab I talked about has over 100 researchers looking at what's happening around the world in the threat landscape. We are looking at how deep we can go in terms of monetizing some of the knowledge we have, which is critical for today's world in terms of disseminating that information and using it to protect our customers and their infrastructure from attacks. That's what we are doing in terms of making sure that we have a clear roadmap for the current as well as future, and we are reinvesting all our profits into that innovation and R&D. We are going to invest significantly in sales and ensure that we have a good leadership team to drive that and drive the talent within the organization. These are some of the very important pivots, and we are doing well so far. We have a very long-term view regarding how we want to grow the organization." 
-
-[Music]
+We now shift focus to quick heal. The stock has been a doubleer on a year to date basis
+and has risen over 10% on a monthly basis as well. Now due to its various product launches,
+however, it's under pressure today. We spoke to the chief executive officer Vishal Salvi
+about the recent launch of anti fraud.ai. Listen into what he had to say.
+Yeah, so this is a completely new category of product that we have launched after three
+decades in the cyber security industry and having a very flagship product of antivirus,
+which is for B2C. We have now launched antivirus related product, but this is basically into
+anti fraud and it addresses the issue of the growing problem of frauds that are happening
+because of grow rapid digitization. And it is the first time at least three decades that
+we're creating a second category in our B2C product. So of course, we have great expectations
+in terms of how this will be adopted. And given that it is something which is completely
+new in the Indian market, we expect that we will add significant value in terms of protecting
+customers from falling victims to the growing frauds.
+Right, but can just talk to us about how this might add to your revenue top line, will it
+take time or what quarters this schedule? It has already started in the sense that we
+have already started dispatching the inventory to all our partners and resellers. And we
+have had a global and India launch across each of the regions where there has been very good
+participation from our partners to see the demand that can grow. So for all practical
+purposes, it's already now launched and we'll start getting revenues recorded from this
+quarter onwards.
+Right, got that. Okay, let me move on to talking about the revenue mix. Your focus gradually
+has been moving towards enterprise customers from the consumer based category. Like for
+example, it was 20 to 18 effort 21 and in the recent quarter, it has been around 43 to
+57%. So can you tell us more about how this enterprise business is looking out for you?
+Is it more margin, a creative and why such a kind of shift and what are your future plans?
+Quick kill has been, you know, pioneers in cyber security and antivirus for many years.
+It has been stood the last three decades of innovation and changes which have happened
+and we have, you know, we have a market position in terms of, you know, you know, all the products
+that we have in B2C and it was natural that, you know, we pivot towards enterprise security
+and because, you know, of course, there's a significant amount of growth and in, you
+know, you know, in terms of the overall market that is growing as far as enterprise security
+is concerned.
+And also there are so many avenues to create value addition and different solutions which
+are coming up in the market.
+So quick kill has created enterprise grant called secure, right?
+And in that we have, you know, different products sets, you know, in terms of protection, detection
+and prevention and so we have a host of these solutions that we have introduced in the market
+and we believe that's where the future growth will lie as far as the company is concerned.
+So the investments have been happening for over the past seven or eight years and we
+are now in the position where we are able to see the benefits of that growth which is
+where you can see that, you know, 40% of our, you know, revenues are coming from enterprise
+and it's growing on a global basis.
+Right.
+Okay.
+So let me talk to you about the margins.
+One doubt which I had is when you move to the B2B business, don't you think you're negotiating
+power in terms of B2B business will go down because of the competition over there?
+Yeah, I think, you know, the market is fairly large, it is growing, the problem related
+to cybersecurity is only increasing because of the way in which we're adopting digital
+cloud, AI, data and so many regulations coming in and expectations.
+Obviously, organizations are facing a significant challenge and there are many organizations
+who have adopted it and there are many more organizations who are yet to adopt it.
+So I think the market is fairly large, there is still a untapped segment of customers who
+have not yet adopted cybersecurity in a holistic manner and, you know, we are the only Indian
+make in India story, right, where we argue well for Atmani Prabhara and make in India.
+And so, you know, in from that point of view, there's a humus opportunity for a company like
+us, who have been in the forefront of creating these solutions for many years.
+And now, you know, really investing in various solutions for enterprise.
+So we do believe that, you know, we have a huge amount of play as far as the market
+is concerned.
+And also, I think, you know, enterprise business has great margins, you know, and also there's
+a lot of predictability and consistency in terms of collections and other things.
+So, therefore, I think it's a business that we believe is going to help us to grow and
+scale the company to a different level altogether.
+Right.
+So as you said, that enterprise business is more marginal creative.
+So can you just maybe qualify it in terms of a number?
+So we have not, you know, shared these details publicly.
+And also, you know, right now, we are on silent period, so I won't be able to share much.
+But having said that, you know, one of the things which I've definitely shared is that
+we believe and we have seen and observed that the enterprise business gives us better collections,
+better margins, and obviously, better scale.
+So it's definitely an area where people double down.
+We are investing significantly in innovation.
+We are one of the largest malware labs in the country.
+If not in the country, I think it's also in this region as well.
+And we are doing a lot, you know, in terms of adding a new solution.
+So we have already released Horizon 2 products and now we are in the process of releasing
+Horizon 3, which is the new technologies and new solutions which are going to come in the
+future for enterprises.
+Right.
+Okay, so what kind of mix do you see going forward for the enterprise and customer?
+Do you see like 50/50 or even more from coming from the enterprise?
+Well, definitely, it's going to be crossing 50 very soon, right?
+At the rate at which we are growing, you know, we moved from 20/80 to already 40/60.
+And so, you know, clearly if you look at the market, 95% to 5% is the split between enterprise
+and the consumer globally.
+So obviously, that's a potential that we have, you know, in terms of how we can grow and
+start getting our share.
+Of course, we are new to people to enterprise security and so, you know, we have a way to
+grow in terms of how when we catch up there.
+But you know, all the trends that we have seen in the last five or six quarters, as
+far as the company is concerned, we are seeing the trajectory where every quarter we are
+consistently growing our enterprise pile of business and that will continue to happen.
+Why we continue to strengthen our P2C and consumer business and the fact that we are
+now launching a new category of anti-fraud, which is very different from antivirus, is
+a demonstration that we continue to also focus on our core, which is our consumer business.
+Right.
+Got that.
+Very interesting part on how you want to scale up the enterprise business.
+But let me talk to you about the Microsoft outage, which happened recently.
+So, these kind of outages, which happen outside, do you look at it as an opportunity for you
+to, you know, pitch your solution to the enterprise and the customer, or give me some kind of
+color on how this can pose as an opportunity for you?
+Yeah, I think one thing, which is the Microsoft CrowdStrike outage has highlighted is the widespread
+importance of cybersecurity solutions in today's digital world, right?
+And you can imagine that one product going down can cause such a big impact to the world
+and the global markets.
+So, obviously, it's a very important responsibility that every vendor does not just cybersecurity
+vendor, but any vendor has in terms of making sure that the products are efficient and working
+and do not create a denial of service to its customers.
+Obviously, this incident gives us an example of the importance of how updates, the software
+updates that you release on your endpoints are critically to be tested properly before
+it is released to the market.
+So, clearly, you know, this is one example of how something can go wrong and if the world
+should know about it, it can happen to anyone.
+So, we don't want to just say that, you know, and criticize it, but I think we can learn
+from this.
+At the same time, we are extremely proud and happy to say that, you know, Wichelen's history
+has never faced such a challenge.
+We obviously managed 9 million endpoints across the globe and we have never had a blue screen
+of that kind of an issue for so many years.
+And so, we have a very robust testing methodology and how we do it and we will continue to do
+that.
+Obviously, always look at opportunities to how we can, our products can add value to
+our customers and we are seeing a strong uptake as far as that is concerned in the Indian context
+right now for enterprise business and, you know, obviously, every situation creates an
+opportunity for us and in this case, you know, our customers were happy that they never faced
+this problem because they were using our software.
+Right.
+Got that.
+First thing, of course, customers would now be more aware on how software is important,
+software security is important.
+But one last question because of crunch of time, Wichelen has done immensely well given
+more than 150% return in last one year.
+But I would want to know what are your modes that you are looking forward to in the near
+term, at least for the next three to four quarters for our viewers?
+Yeah, I think we have done, you know, since the time it's been now just about a year that
+I've come on board as a CEO of Wichelen and some of the changes that we are doing is in
+terms of, you know, strengthening our leadership.
+So we've hired various leaders from different parts of the industry and we're happy that
+we've been able to attract them and, you know, it is giving us a clear momentum in terms
+of, you know, what help you want to obscure our strategy as far as the sales is concerned,
+you know, we kind of re-energizing and reinventing our sales motion as far as enterprise sales
+is concerned.
+And so there's a significant amount of, you know, addition in not just in the senior but
+mid-management level, you know, as far as our sales enterprise sales is concerned.
+And the third is, I think, you know, we kind of committed to, you know, our product roadmap
+and, you know, Wichelen has been at the center of innovation, we have nine patents across
+cybersecurity, which, you know, not many people are aware of, and extremely proud of, you
+know, Indian company having nine cybersecurity patents.
+And so the foundation of our company is innovation and, you know, the malware lab that I talked
+about having 100 plus researchers who are, they are looking at what's happening around
+the world in threat landscapes.
+So we're kind of looking at how deep we can go in terms of and how we can monetize some
+of the knowledge that we have, which is very, very critical for today's world in terms of,
+you know, disseminating that information and losing that information to protect our customers
+and their, you know, infrastructure from attacks.
+So that's really what we are doing in terms of, you know, making sure that we have a clear
+roadmap of current, as well as future, and we are investing all our profits into that
+innovation and R&D, we are going to invest significantly in sales and, you know, making
+sure that we have a good leadership team to drive that and driving the talent density
+of the organization.
+So these are some of the very important pivots which are, and we are going so well so far,
+you know, and we have a very long-term view in terms of how we want to grow the organization.
