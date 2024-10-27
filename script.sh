@@ -12,7 +12,7 @@ language='en'
 accent='false'
 gpu='true'
 
-pathList=("asian" "asian2" "indian" "indian2" "english" "english2")
+#pathList=("asian" "asian2" "indian" "indian2" "english" "english2")
 
 while [ $# -ge 1 ] ; do
         case "$1" in
@@ -26,16 +26,18 @@ while [ $# -ge 1 ] ; do
         esac
 done
 
-cd ./copilot
-git checkout main
-git pull
-cd ../
-cp ./copilot/InterviewCopilot/ViewModels/LocalTranscriptViewModel.swift ./ScriptTranscript/
+#cd ./copilot
+#git checkout main
+#git pull
+#cd ../
+#cp ./copilot/InterviewCopilot/ViewModels/LocalTranscriptViewModel.swift ./ScriptTranscript/
 
-xcodebuild -scheme ScriptTranscript -configuration Debug -derivedDataPath ./Build
+pathList=("english2")
+#xcodebuild -scheme ScriptTranscript -configuration Debug -derivedDataPath ./Build
 for path in "${pathList[@]}"; do
     echo "Path: $path"
-    audioPath=$work_dir"/Resources/"$language"/"$path"/Files/"
+    #audioPath=$work_dir"/Resources/"$language"/"$path"/Files/"
+    audioPath=$work_dir"/Resources/"$language"/"$path"/f2/"
     transcriptPath=$work_dir"/Resources/"$language"/"$path"/Transcript/"
     echo "$transcriptPath \n"
     audioFiles=$(ls $audioPath | grep '.wav')

@@ -22,7 +22,7 @@ Copy model and audio file in `./Resources`. Copy auido files in `./Resources/aud
 
 // install requirment
 pip3 install jiwer
-pip3 install html-table
+pip3 install PrettyTable
 
 // wer rate
 python3 calc_wer.py

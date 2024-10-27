@@ -1,7 +1,8 @@
 import jiwer
 import os
 import sys
-from HTMLTable import HTMLTable
+from prettytable import PrettyTable
+import html
 
 # 定义一个去掉换行符的自定义转换
 class RemoveNewLines:
@@ -31,13 +32,13 @@ accent_path_files = os.listdir(accent_path)
 accent_files = [entry for entry in accent_path_files if not entry.startswith('.')]
 print(accent_files)
 
-table = HTMLTable(caption='audio transcript jiwer table')
-table.append_header_rows((
-    ('File',    'Language',    'Accent',    'wer',    'mer',    'wil',    'wip',    'cer'),
-))
+
+table = PrettyTable(['File', 'Language', 'Accent', 'URL','wer', 'mer', 'wil', 'wip', 'cer', 'OpenAI wer', 'OpenAI mer', 'OpenAI wil', 'OpenAI wip', 'OpenAI cer'])
+
 for accent_file in accent_files:
     script_path = accent_path + accent_file + "/Transcript/"
     subtitle_path = accent_path + accent_file + "/Subtitle/"
+    openAI_path = accent_path + accent_file + "/OpenAI/"
     script_files = [file for file in os.listdir(script_path) if file.endswith('.txt') and os.path.isfile(os.path.join(script_path, file))]
     script_files.sort() 
     
@@ -49,52 +50,53 @@ for accent_file in accent_files:
             reference_file=script_path+txt_file
             with open(reference_file, 'r', encoding='utf-8') as file:
                 reference = file.read()
+            openAI_reference_file=openAI_path+txt_file
+            with open(openAI_reference_file, 'r', encoding='utf-8') as file:
+                openAI_reference = file.read()
             hypothesis_file=subtitle_path+txt_file
             with open(hypothesis_file, 'r', encoding='utf-8') as file:
                 hypothesis = file.read()
             transformed_reference = transform(reference)
+            transformed_openAI_reference = transform(openAI_reference)
             transformed_hypothesis = transform(hypothesis)
             wer = jiwer.wer(transformed_reference, transformed_hypothesis)
             mer = jiwer.mer(transformed_reference, transformed_hypothesis)
             wil = jiwer.wil(transformed_reference, transformed_hypothesis)
             wip = jiwer.wip(transformed_reference, transformed_hypothesis)
             cer = jiwer.cer(transformed_reference, transformed_hypothesis)
+
+            OpenAIwer = jiwer.wer(transformed_openAI_reference, transformed_hypothesis)
+            OpenAImer = jiwer.mer(transformed_openAI_reference, transformed_hypothesis)
+            OpenAIwil = jiwer.wil(transformed_openAI_reference, transformed_hypothesis)
+            OpenAIwip = jiwer.wip(transformed_openAI_reference, transformed_hypothesis)
+            OpenAIcer = jiwer.cer(transformed_openAI_reference, transformed_hypothesis)
             
             parts = txt_file.split("-")
             accent = parts[0]
-            table.append_header_rows((
-                (txt_file,    language,    accent,    f"{wer:.2%}",    f"{mer:.2%}",    f"{wil:.2%}",    f"{wip:.2%}",    f"{cer:.2%}"),
-            ))
+            parts = txt_file.split("-")
+            vid= "-".join(parts[1:]).split(".")[0]
+            table.add_row([
+                txt_file,
+                language,
+                accent,
+                '<a href="https://www.youtube.com/watch?v='+ vid + '">link</a>',
+                f"{wer:.2%}",
+                f"{mer:.2%}",
+                f"{wil:.2%}",
+                f"{wip:.2%}",
+                f"{cer:.2%}",
+                f"{OpenAIwer:.2%}",
+                f"{OpenAImer:.2%}",
+                f"{OpenAIwil:.2%}",
+                f"{OpenAIwip:.2%}",
+                f"{OpenAIcer:.2%}"
+            ])
             print(f"{txt_file} Word Error Rate: {wer:.2%}")
         else:
             print(f"{txt_file} is not in the audioSubtitle.")
             continue
 
-table.caption.set_style({
-    'font-size': '15px',
-})
-
-table.set_style({
-    'border-collapse': 'collapse',
-    'word-break': 'keep-all',
-    'white-space': 'nowrap',
-    'font-size': '14px',
-})
-
-table.set_cell_style({
-    'border-color': '#000',
-    'border-width': '1px',
-    'border-style': 'solid',
-    'padding': '5px',
-})
-
-table.set_header_row_style({
-    'color': '#fff',
-    'background-color': '#48a6fb',
-    'font-size': '18px',
-})
-
-html = table.to_html()
-
-with open('audio_jiwer.html', 'w', encoding='utf-8') as f:
-    f.write(html)
+text = table.get_html_string(format=True)
+text = html.unescape(text)
+with open('audio_jiwer.html', 'w') as f:
+    f.write('<p>'+text+'</p>')

@@ -8,8 +8,8 @@
 import Foundation
 
 //var LocalPath = ""
-var AudioFilePath = "/Users/jkh/go/src/script_synco/ScriptTranscript/Resources/audioFiles/interview-000.wav"
-var OutputFilePath = "/Users/jkh/go/src/script_synco/ScriptTranscript/Resources/audioTranscript/interview-000.txt"
+var AudioFilePath = "/Users/jkh/go/src/script_synco/ScriptTranscript/Resources/en/asian2/Files/asian-8Wg-NQu5qGc.wav"
+var OutputFilePath = "/Users/jkh/go/src/script_synco/ScriptTranscript/Resources/en/asian2/Transcript/asian-8Wg-NQu5qGc.txt"
 var WhisperModelPath = "/Users/jkh/go/src/script_synco/ScriptTranscript/Resources/ggml-base.bin"
 
 func setArgs() {
@@ -45,7 +45,6 @@ func setArgs() {
     }
     print("AudioFilePath: \(AudioFilePath)\n")
     print("OutputFilePath: \(OutputFilePath)\n")
-    WhisperParams.is_use_gpu = true
 }
 
 func mainRun() throws {

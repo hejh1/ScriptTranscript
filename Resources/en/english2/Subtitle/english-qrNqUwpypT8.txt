@@ -1,85 +1,309 @@
-"Design of Fake News Detection System [Music] 
-
-Okay, sounds good. So, um, I'm going to talk a little bit about my assumptions regarding this system. I will assume that we will be designing a fake news detection system for social media because increasingly, news is read mostly through social networks. Although some of the components of the system I'm going to talk about are applicable to pure text applications that don't have any social network information, I will also assume that we have access to information about the social network—so user accounts, how the information flows through the network, like post timings, etc.
-
-So, I will share my screen and show you a diagram of the fake news detection system. Um, so we're going to have a few modules in this fake news detection system. We are going to assume that we have an incoming media post; this is going to be our input, and our output is going to be whether it's fake or real. There's going to be, obviously, some action taken depending on that. 
-
-In the beginning, we want to classify whether this is news or not news because if we stick a label of fake on someone's opinion, we might have some problems arising from that. So, yeah, we will have some attributes that come together with the social media posts. So, basically, we've determined whether it's news or not news, then whether it has a URL or not, and then we have the user characteristics—so maybe the number of followers, connections, other posts, etc. 
-
-Then we will have three different modules where this social media post will go into. The first one is a text analysis module; the second one will analyze the URL if it exists, and the third one will analyze the movements of the post through the network. 
-
-Um, so the text analysis module will do two things: it will have a Model A for analyzing just the text. There are some features that might indicate a fake news post. For example, it might be very subjective, it might have a lot of question marks, some quantifiers, generalizations, um, and that kind of analysis is good, but it's probably not very reliable because, as we know, even people are very bad at determining whether a news piece is fake or real. So, the machine probably will not be either.
-
-To support that, we will have another part of this module where we represent each fact as an RDF triple. So, this is just saying, for instance, we have a sentence: "John saw the cat." We represent that as a triple where the subject is John, the predicate is "saw," and the object is the cat. We take more complex sentences and represent each pairing of subject and object with the predicate as a triple. 
-
-Then, basically, for this one to work, we need an outside knowledge base such as DBpedia, because then we match these facts to DBpedia. Recent research has found that the more concrete those entities and those facts and those triples are, the better the chance that the news piece is real. Because if it's very general, then it's easy to go either way—you can be talking about something very confidently, but it's just, you know, just talk.
-
-So, yeah, combining these two things, there are different options for combining them. We could train two different models—one for the text alone and one for the facts as triples. We could combine the two and, you know, use embeddings and concatenate, for example, the embeddings, or we could have a voting system. There are many different options for this, and if I were to use voting, I would put less weight on the text-only analysis and more weight on the facts as triples analysis because it's also supported by an outside source that we know is verified. 
-
-Got it. So, this will output whether it's fake or real. So, um, then we will have some confidence marker, and if it's high confidence, then probably we will want to take immediate action if it's definitely a fake news item. But if it's low confidence, then we will defer to our third module, which I'll talk about later.
-
-So, the second module will take the URL; it will read the URL, and then it will take the title of the text and the text itself. 
-
-And I'll clarify: is this a URL of the actual post itself, or are these URLs contained within the post? 
-
-Yeah, sorry, I should have been more clear—it's the URL that's contained in the post. Got it. Okay, so we take that, uh, the supporting URL for the social media post, and then we take the title and we take the text. Again, recent research has found that if the title and the text agree, then it's more likely to be a real news item. But if they don't agree, then probably it's either fake or misleading—it's like clickbait, you know? Because the headline can say one thing, but the actual text is not saying that. 
-
-So, that's called stance detection, and we will do that using this module. Then we will do the same thing, um, and I am actually thinking that probably these three—so text, just text, facts, triples, and URL—could be combined into one module that will say whether it's fake or real. 
-
-Okay, so if it's high confidence, take action; if it's low confidence, we go on to the network analysis module. 
-
-And why—question? 
-
-Yes, so you mentioned that these two could be combined into one. Are there any advantages to separating them into two separate modules? 
-
-Yes, because some posts will not contain a URL. 
-
-So, ah, that's fair. Okay, uh, but we can, you know, um, there are probably ways around that. So, um, but yeah, let's start. Um, the reason why we have the network analysis module that's kind of to the side and we only use it with low confidence scores is because it can only work if it's delayed in time. Because it is analyzing the movement of the post through the network—basically, um, how the users are posting, which users are posting, etc. 
-
-So, about in the recent research that I read, it said about two hours is the time that needs to pass before this module can work correctly and identify whether the item is real or fake. We will need a model here as well that takes in, apart from the actual post and the user information of the post—who the user is who posted the item—we need the representation of the social network as a graph database. And obviously, we will need to partition it because we cannot probably put in the whole thing in there.
-
-Yeah, um, and what are—yeah, if you're touching on this, I apologize—what are some of the characteristics that a fake news post would demonstrate in its movement in the network versus real news? 
-
-Um, so I think it might be different which users are posting it and how quickly it's appearing through the network. Some people might be copy-pasting, you know, if it's like robots, and if it's moving very fast, then it might be real people who are disseminating it, for example.
-
-Okay, so that's one characteristic, for example. 
-
-Yeah, so, um, here, I think if we take all the combinations of all these and it says it's fake, then we have a lot more confidence that it's really fake, so we take some action based on this output. 
-
-Okay, um, so the two external data sources that we will need are the knowledge base that is put in for the facts analysis and the representation of the social network. We will need machine learning models, um, oh yeah, and these two will need to be updated frequently as, you know, the facts change quickly and then social networks change. 
-
-So, how frequently that will need to be decided, you know, depending on the business requirements. I would say daily, but maybe even more frequent than that—I don't know.
-
-Okay, that's fair. Yeah, and then, uh, these will require machine learning models, and to train such machine learning models, we will obviously need some training data. There are, um, data sets out there that are available for training. For instance, there is the LIAR dataset that's about 13,000 short statements that are labeled as fake or real, just text. And then there is also FNC-1, which is about 75,000 labeled headlines and articles. This would be for the stance detection, the correspondence between headlines and documents, whatever. 
-
-Uh, yeah, and then once the system is put into production, we will definitely need to have some quality assurance that it's working as expected. I'm expecting that we would need to do daily checks of all three models, or four depending on how you count here, um, daily checks on all three models to evaluate whether they're actually doing their jobs and how accurately they're giving us the answers. Yes, or how often they're giving us the right answer, rather. 
-
-Uh, yeah, just measuring, you know, precision and recall, and those metrics will also depend—like which metrics we optimize for will depend on whether this system is completely automated or if there is a human in the loop. Right? Um, if there's a human in the loop, we can have high recall, and precision can be a little less because we want to cover all the cases, and the human can hopefully sort through the rest.
-
-Yeah, yeah, okay, that's fair. And what do you do in situations where, let's say, you get a lot of false positives for fake news? Um, what is the approach in this system to be able to deal with sorting those false positives ultimately? 
-
-Um, well, I think, um, the first thing is to do some error analysis just to figure out what happened—why are we having so many false positives? Uh, maybe people are talking about this one particular topic, and that's being labeled as a false positive. Then we need to update the model somehow to make sure that they are not going through as fake when they're actually real. 
-
-Got it. Okay, I'm interested in your perspective on if you were approaching this from the bad actor's standpoint—what are some ways that someone could break the system or take advantage of it? 
-
-Uh, interesting. Um, I guess that's a good way to make sure that it actually works. Um, well, I think a lot of social media users, they figure out very quickly how the algorithm works, and they try to game the system. I mean, even I know on LinkedIn, if you post a post with a link, it will never reach any kind of viewership—it's going to be very low. So, people post links in the comments. Same thing. 
-
-Yeah, people figure out, "Oh, the URLs are not going through; I'm just gonna put it in the comments." And yeah, uh, this is something that's kind of a cat-and-mouse game where we try to build a system that will protect us from bad actors, and the bad actors figure it out. Now we have to go back and do something else.
-
-Yeah, yeah, that's fair. This is a great start to building this kind of system. Thank you so much. 
-
-Kanya, I'm wondering, do you have any thoughts on if someone encounters a question like this in the wild? What are your suggestions for how to approach it? Because it's a pretty broad question, and you could go ahead in so many different directions for it. So, what are your thoughts on that? 
-
-I think when you think of any kind of project like this where there's NLP or machine learning involved, think about the business requirements and how they translate into what you need to do, and how you find the training data—whether the training data will correspond to what's out there. Because, for instance, the datasets that are public, they go stale very quickly; they might be very curated while your data is going to be wildly different. 
-
-So, you know, maybe a dataset that's out there is good for a proof of value, but then you will need to collect your own data. Um, and then after you make the models and they seem to work, how are you going to monitor them and make sure that they don't fail on you, especially silently? 
-
-Yeah, lovely. Thank you so much, Kanya. Um, any final thoughts before we wrap up? 
-
-Uh, thank you! I enjoyed answering the questions and hope you enjoyed watching it. 
-
-Yeah, absolutely! I learned something during this. So, this is not my area of expertise, but I really enjoyed learning about how you would build a system like this for a very, very tough and pertinent problem today. So, thank you so much, and I hope this is valuable for everyone at home. Good luck with your interviews.
-
-Thanks so much for watching! Don't forget to hit the like and subscribe buttons below to let us know that this video is valuable for you. And of course, check out hundreds more videos just like this at tryexponent.com. Thanks for watching, and good luck on your upcoming interview. 
-
-[Music]"
+design a fake news detection system.
+- Okay, sounds good.
+So I'm gonna just talk about a little bit
+about my assumptions about the system.
+I will assume that I will,
+we will be designing a fake news detection system
+for social media because increasingly news are read
+mostly through social networks.
+Although some of the components of the system
+gonna talk about are applicable to pure text applications
+that don't have any social network information.
+I will also assume that we have access to information
+about the social networks.
+So users, user, full accounts,
+how the information flows through the network,
+like posts, timing of the posts, et cetera, et cetera.
+So I will share my screen and show you a diagram
+of the fake news detection system.
+So we're going to have a few modules
+in this fake news detection system.
+We are going to assume that we have an incoming media post,
+this is going to be our input,
+and our output is going to be whether it's fake or real,
+and there's going to be obviously some action taken
+depending on that.
+In the beginning, we want to classify
+whether this is news or not news,
+because if we stick a label of fake on someone's opinion,
+we might have some problems arising from that.
+So we will have some attributes that come together
+with the social media posts,
+so basically we determined whether it's not news,
+then whether it has a URL or not URL,
+and then we have the user characteristics,
+so maybe number of followers, connections,
+other posts, et cetera.
+And then we will have three different modules
+where this social media post will go into.
+The first one is a text analysis module.
+The second one will analyze the URL, if it exists,
+and the third one will analyze the movements
+of the post through the network.
+So the text analysis module will do two things.
+It will have a model for analyzing just the text,
+and there are some features that might
+give out a fake news post.
+For example, it might be very subjective,
+it might have a lot of question marks,
+some quantifiers, generalizations,
+and that kind of analysis is good,
+but it's probably not very reliable,
+because as we know, even people are very bad
+at determining whether a news piece is fake or real,
+so the machine probably will not be either.
+So to support that, we will have another part
+of this module where we represent each fact
+as an RDF triple, so this is just saying,
+for instance, we have a sentence, John saw the cat,
+so we represent that as a triple where the subject is John,
+the predicate is saw, and the object is the cat,
+and we take more complex sentences
+and we'll represent each pairing of subject
+and object with the predicate as a triple.
+And then basically for this one to work,
+we need an outside knowledge base, such as DBPedia,
+because then we match these facts to DBPedia,
+and then recent research has found
+that the more concrete those entities
+and those facts and those triples are,
+the better the chance that the news piece is real,
+because if it's very general,
+then it's easy to go either way,
+you can be talking about something very confidently,
+but it's just just talk, so yeah.
+Yeah, so combining these two things,
+and there are different options for combining these, right?
+We could train two different models,
+one for the text alone, one for the effect of triples,
+we could combine the two and use embeddings
+and concatenate, for example, the embeddings.
+And then, or we could have a voting system,
+there are many different options for this.
+And if I did voting, I would put less,
+less weight on the text only,
+and more weight on the fact as triples analysis,
+because it's also supported by an outside source
+that we know is verified.
+Got it.
+So this will output whether fake or real.
+So, and then we will have some confidence marker,
+and if it's high confidence,
+then probably we will want to take immediate action,
+if it's definitely a fake news item.
+But if it's low confidence,
+then we will defer to our third module,
+which I'll talk about later.
+So the second module, we'll take the URL,
+it will take the URL, it will read the URL,
+and then it will take the title of the text
+and the text itself.
+And also, the URL,
+is this a URL of the actual post itself,
+or is this a URL contained within the post?
+Yeah, sorry, I should have been more clear.
+It's the URL of that's contained in the post.
+Got it, okay.
+So we take that, supporting URL, right,
+for the social media post,
+and then we take the title, and we take the text,
+and again, recent research has found that,
+if the title and the text agree,
+then it's more likely to be a real news item.
+But if they don't agree,
+then probably it's either fake or misleading,
+it's like clickbait,
+because the headline can say one thing,
+but the actual text is not saying that, so.
+So that's called stance detection,
+and then we will do that using this module,
+and then we will do the same thing.
+And I am actually thinking that probably these three,
+so text, just text, faxes, ripples, and URL,
+could be combined into one module
+that will say whether it's fake or real.
+Okay, so if it's high confidence, take action,
+if it's low confidence,
+we go on to the network analysis module,
+and why?
+Good question.
+Yes.
+So you mentioned that these two could be combined into one,
+are there any advantages to separating them
+into two separate modules?
+But yes, because some posts will not contain a URL.
+So, oh, that's fair, okay.
+But we can, there are probably ways around that, so.
+But yeah, that's fair.
+And the reason why we have the network analysis module
+that's kind of to the side,
+and we only use it with low confidence scores
+is because it can only work if it's delayed in time,
+because it is analyzing the movement
+of the posts through the network.
+Basically, how the users are posting,
+which users are posting, et cetera, et cetera.
+So about, in the recent research that I read,
+it said about two hours.
+It's the time that needs to pass
+before this module can work correctly
+and identify whether the item is real or fake.
+And we will need a model here as well,
+that takes in, apart from the actual post
+and the user information of the post who,
+the user who posted the item,
+we need the representation of the social network
+as a graph database.
+And obviously, we will need to partition it
+because we cannot probably put in the whole thing in there.
+- Yeah.
+And if you're touching on this, I apologize.
+What are some of the characteristics
+that a fake news post would demonstrate
+in its movement in the network versus real news?
+- So,
+I think it might be different,
+which users are posting it
+and how quickly it's appearing through the network,
+because some people might be copy-pasting.
+If it's like robots, it's moving very fast,
+that it might be real people who are disseminating it,
+for example. - Okay.
+- So that's one characteristic, for example.
+- Yeah.
+- So, here, I think if we take all,
+the combination of all these, and it says it's fake,
+then we have a lot more confidence that it's really fake.
+So, take some action based on this output.
+- Okay.
+- So, the two external data sources
+that we will need are the knowledge base
+that is put in for the facts analysis
+and the representation of the social network.
+And we will need machine learning models.
+Yeah, and these two will need to be updated frequently
+as, you know, the facts change quickly,
+and then social network changes.
+So, and how frequently that will need to be decided,
+you know, depending on the business requirements,
+I would say daily, but maybe even more frequent than that,
+I don't know.
+- Okay, that's fair.
+- Yeah.
+And then these will require machine learning models.
+And to train such machine learning models,
+we will obviously need some training data.
+And there are data sets out there
+that are available for training.
+For instance, there is the Liar data set
+that's about 13,000 short statements,
+which is fake or real, just text.
+And then there is also FNC1,
+which is about 75,000 labeled headlines and articles.
+So, this would be for the stance detection,
+the correspondence between headline and document.
+- uh-huh.
+- Yeah, and then once the system,
+we put it into production,
+we will definitely need to have some quality assurance
+that it's working as expected.
+And I'm expecting that we would need to do daily checks
+of all three models,
+or four, depending on how you count here.
+- Daily checks on all three models to evaluate
+whether they're actually doing their jobs
+and how accurately they're giving us the answers.
+- Yes, correct.
+- Or how often they're giving us the right answer, rather.
+- Yeah, just measuring, you know,
+precision and recall.
+And those metrics will also depend,
+like which metrics we optimize for will depend
+whether this system is completely automated
+or if there is a human in the loop, right?
+If there's a human in the loop,
+we can have high recall and precision can be a little less
+because we wanna cover all the cases
+and the human can hopefully sort through the rest.
+- Yeah, yeah, okay, that's fair.
+And what do you do in the situations
+where let's say you get a lot of false positives
+for fake news?
+What is the approach in this system
+to be able to deal with sorting those false positives
+ultimately?
+- Well, I think the first thing is to do some air analysis
+just to figure out what happened.
+Why are we having so many false positives?
+Maybe people are talking about this one particular topic
+that's being labeled as false positive
+and then we need to update the model somehow
+to make sure that they are not going through as fake
+when they're actually real.
+- Got it, okay.
+I'm interested in your perspective on
+if you were approaching this from the bad actor standpoint,
+what are some ways that someone could break this system
+or take advantage of it?
+- Interesting.
+I guess that's a good way to make sure that it actually works.
+Well, I think a lot of social media users,
+they figure out very quickly how the algorithm works
+and they try to gain the system.
+I mean, even I know on LinkedIn, if you post to post
+with a link, it will never reach any kind of viewership.
+It's going to be very low.
+So people post links in the comments.
+Same thing.
+People figure out, oh, the URLs are not going through.
+I'm just goona put it in the comments.
+And yeah, this is something that's kind of a cat and mouse game
+where we try to build a system that will protect us
+from bad actors and the bad actors figure that.
+Now we have to go back and do something else.
+- Yeah, yeah, that's fair.
+This is a great start to building this kind of system.
+Thank you so much, Jennia.
+I'm wondering, do you have any thoughts on
+if someone encounters a question like this in the wild,
+what are your suggestions for how to approach it?
+'Cause it's a pretty broad question
+and you could go in so many different directions for it.
+So what are your thoughts on that?
+- Well, I think when you think of any kind of project
+like this where there's NLP or a machine learning involved,
+think about the business requirements
+and how they translate into what you need to do
+and how you find the training data,
+whether the training data will correspond to what's out there
+because for instance, the data sets that are public,
+they go stale very quickly.
+They might be very curated while your data
+is going to be wildly different.
+So maybe a data set that's out there is good for value
+but then you will need to collect your own,
+how are you going to collect your own data?
+And then after you make the models and they seem to work,
+how are you going to monitor them and make sure
+that they don't fail on you, especially silently?
+- Yeah, lovely.
+Thank you so much, Jennia.
+Any final thoughts before we wrap up?
+Thank you, I enjoyed answering the question
+and hope you enjoyed watching it.
+- Yeah, absolutely.
+I learned something during this.
+So it's not my area of expertise
+but I really enjoyed learning about, yeah,
+how you would build a system like this
+for a very, very tough and pertinent problem today.
+So thank you so much.
+And I hope this is valuable for everyone at home.
+Good luck with your interviews.
+- Thanks so much for watching.
+Don't forget to hit the like and subscribe buttons below
+to let us know that this video is valuable for you.
+And of course, check out hundreds more videos
+just like this at tryexponent.com.
+Thanks for watching and good luck
+on your upcoming interview.
