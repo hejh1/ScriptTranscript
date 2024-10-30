@@ -32,8 +32,29 @@ accent_path_files = os.listdir(accent_path)
 accent_files = [entry for entry in accent_path_files if not entry.startswith('.')]
 print(accent_files)
 
-
+acc_type = ""
+if len(sys.argv) > 2:
+    acc_type = sys.argv[2]
+    if acc_type == "asian":
+        accent_files = ["asian", "asian2"]
+    elif acc_type == "english":
+        accent_files = ["english", "english2"]
+    elif acc_type == "indian":
+        accent_files = ["indian", "indian2"]
+   
 table = PrettyTable(['File', 'Language', 'Accent', 'URL','wer', 'mer', 'wil', 'wip', 'cer', 'OpenAI wer', 'OpenAI mer', 'OpenAI wil', 'OpenAI wip', 'OpenAI cer'])
+
+ave_wer = 0.0
+ave_mer = 0.0
+ave_wil = 0.0
+ave_wip = 0.0
+ave_cer = 0.0
+ave_openAI_wer = 0.0
+ave_openAI_mer = 0.0
+ave_openAI_wil = 0.0
+ave_openAI_wip = 0.0
+ave_openAI_cer = 0.0
+ave_count = 0
 
 for accent_file in accent_files:
     script_path = accent_path + accent_file + "/Transcript/"
@@ -92,11 +113,56 @@ for accent_file in accent_files:
                 f"{OpenAIcer:.2%}"
             ])
             print(f"{txt_file} Word Error Rate: {wer:.2%}")
+            ave_wer = ave_wer + float(wer)
+            ave_mer = ave_mer + float(mer)
+            ave_wil = ave_wil + float(wil)
+            ave_wip = ave_wip + float(wip)
+            ave_cer = ave_cer + float(cer)
+            ave_openAI_wer = ave_openAI_wer + float(OpenAIwer)
+            ave_openAI_mer = ave_openAI_mer + float(OpenAImer)
+            ave_openAI_wil = ave_openAI_wil + float(OpenAIwil)
+            ave_openAI_wip = ave_openAI_wip + float(OpenAIwip)
+            ave_openAI_cer = ave_openAI_cer + float(OpenAIcer)
+            ave_count = ave_count + 1
         else:
             print(f"{txt_file} is not in the audioSubtitle.")
             continue
 
-text = table.get_html_string(format=True)
+ave_wer = ave_wer / ave_count
+ave_mer = ave_mer / ave_count
+ave_wil = ave_wil / ave_count
+ave_wip = ave_wip / ave_count
+ave_cer = ave_cer / ave_count
+ave_openAI_wer = ave_openAI_wer / ave_count
+ave_openAI_mer = ave_openAI_mer / ave_count
+ave_openAI_wil = ave_openAI_wil / ave_count
+ave_openAI_wip = ave_openAI_wip / ave_count
+ave_openAI_cer = ave_openAI_cer / ave_count
+table.add_row([
+                "average",
+                "",
+                "",
+                '',
+                f"{ave_wer:.2%}",
+                f"{ave_mer:.2%}",
+                f"{ave_wil:.2%}",
+                f"{ave_wip:.2%}",
+                f"{ave_cer:.2%}",
+                f"{ave_openAI_wer:.2%}",
+                f"{ave_openAI_mer:.2%}",
+                f"{ave_openAI_wil:.2%}",
+                f"{ave_openAI_wip:.2%}",
+                f"{ave_openAI_cer:.2%}"
+            ])
+
+#table.format = True
+#text = table.get_html_string(attributes={'border': '1', 'style': 'border-width: 1px; border-collapse: collapse;'})
+#text = table.get_html_string(format=True)
+text = table.get_html_string(attributes={"border" : "1" ,"style" : "pborder-width: 1px; border-collapse: collapse; adding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top"})
+#text = table.get_string()
 text = html.unescape(text)
-with open('audio_jiwer.html', 'w') as f:
+
+with open('audio_'+acc_type+'_jiwer.html', 'w') as f:
     f.write('<p>'+text+'</p>')
+
+
