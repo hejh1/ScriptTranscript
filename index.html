@@ -1,0 +1,501 @@
+
+<html>
+<head>
+
+<meta charset="UTF-8">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri&display=swap" rel="stylesheet" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/fontawesome.min.css" integrity="sha512-xX2rYBFJSj86W54Fyv1de80DWBq7zYLn2z0I9bIhQG+rxIF6XVJUpdGnsNHWRa6AvP89vtFupEPDP8eZAtu9qA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<script src="js/wikEdDiff.js" type="module"></script>
+<script src="js/openITI.js" type="module"></script>
+<script src="js/html2canvas.min.js"></script>
+<script src="js/dom-to-image.js"></script>
+<script src="js/canvastotiff.js"></script>
+<script src="js/index.js" type="module"></script>
+<script src="js/kitabDiff.js" type="module"></script>
+
+<style>
+  :root {
+    --ar-chars-font-size: 20px;
+    --bg-col-a: lightgreen;
+    --bg-col-b: lightblue;
+    --bg-col-c: transparent;
+    --col-divider: solid 1px lightgrey;
+    --col-padding: 10px;
+  }
+  .milestoneLocatorA {
+    width: 10px;
+    height: 95%;
+    margin-right: 10px;
+    background: lightblue;
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+  }
+  .milestoneLocatorLineA {
+    width: 10px;
+    height: 5px;
+    margin-right: 10px;
+    background: gold;
+    position: absolute;
+    left: 0px;
+    bottom: 15px;
+  }
+  .milestoneLocatorB {
+    width: 10px;
+    height: 95%;
+    margin-left: 10px;
+    background: lightgreen;
+    position: absolute;
+    right: 20px;
+    bottom: 10px;
+  }
+  .milestoneLocatorLineB {
+    width: 10px;
+    height: 5px;
+    margin-left: 10px;
+    background: gold;
+    position: absolute;
+    right: 0px;
+    bottom: 55px;
+  }
+  body {
+    font-family: 'Roboto', sans-serif;
+  }
+  #outputIntro {
+    display: none;
+  }
+  #outputButtons {
+    display: none;
+  }
+  #optionButtons {
+    display: none;
+  }
+  textarea {
+    font-family: "Amiri", sans-serif;
+    /*font-family: "Courier", monospace;*/
+    font-size: var(--ar-chars-font-size);
+    direction: rtl;
+    border: 1px solid lightgrey;
+    width: 49%;
+    height: 90%;
+    padding: 10px;
+    resize: none;
+  }
+
+  .added {
+    background-color: var(--bg-col-a);
+    border-radius: 3px;
+  }
+  .removed {
+    background-color: var(--bg-col-b);
+    border-radius: 3px;
+  }
+  .common {
+    background-color: var(--bg-col-c);
+    border-radius: 3px;
+  }
+  .moved {
+    background-color: PaleGoldenrod;
+    border-radius: 3px;
+  }
+  #options {
+    width: 95%;
+    background-color: darkgrey;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 4px;
+    display: none;
+  }
+  #inputDiv {
+    display: block;
+    width: 95%;
+    height: 70%;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    margin-right: 0px;
+  }
+
+  input {
+    font-family: 'Roboto', sans-serif;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  #outputDiv {
+    display: none;
+    position: relative;
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+  .resize-container {
+    width: 95%;
+    position: relative;
+    padding: 10px;
+    border: solid 1px lightgrey;
+  }
+  .container {
+    padding-left: 20px;
+    padding-right: 30px;
+  }
+  canvas {
+    font-size: var(--ar-chars-font-size);
+  }
+  table {
+    padding-right: 10px;
+    padding-left: 10px;
+    font-family: "Courier", monospace;
+    /*font-family: "Amiri", sans-serif;*/
+    font-size: var(--ar-chars-font-size);
+    border-collapse: collapse;
+    height: auto !important;
+  }
+  tbody {
+    height: auto  !important;
+  }
+  td {
+    width: 48%;
+    direction: rtl;
+    padding-right: var(--col-padding);
+    padding-left: var(--col-padding);
+    padding-top: 1px;
+    padding-bottom: 1px;
+    /*border-left: solid 1px lightgrey;*/
+    border-left: var(--col-divider);
+    vertical-align: top;
+    height: auto  !important;
+  }
+  td:first-child {
+    border-left: solid 0px lightgrey;
+  }
+  tr {
+    padding: 0px;
+    margin: 0px;
+    height: auto  !important;
+  }
+  #downloadDiv {
+    position: absolute;
+    bottom: 0;
+  }
+  #cDiff {
+    font-size: var(--ar-chars-font-size);
+    font-family: "Amiri", sans-serif;
+    /*margin: 0 auto;*/
+    margin-top: 10;
+    display: none;
+    direction: rtl;
+  }
+  /*.wikEdDiffFragment, .wikEdDiffDelete, .wikEdDiffInsert, .wikEdDiffBlock, .wikEdDiffContainer {
+    font-size: var(--ar-chars-font-size);
+    font-family: "Amiri", sans-serif !important;
+  }*/
+  .wikEdDiffInsert{
+    background-color: lightgreen !important;
+  }
+  .wikEdDiffDelete {
+    background-color: lightblue !important;
+  }
+  .wikEdDiffBlock, .wikEdDiffMarkLeft, .wikEdDiffMarkRight {
+    background-color: PaleGoldenrod !important;
+  }
+  .num-input {
+    width: 40px;
+    border: solid 1px lightgrey;
+    direction: rtl;
+  }
+  /* The Modal (background) */
+  .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+
+  /* Modal Content */
+  .modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+  }
+
+  /* The Close Button */
+  .close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  #selectRowsControls {
+    display: none;
+  }
+  #csvTable td:first-child {
+    width: 30px;
+  }
+  #csvTable td:nth-child(even){
+    width: 3%;
+  }
+  #pagination {
+    display: none;
+  }
+
+  /*.chevron::before {
+  	border-style: solid;
+  	border-width: 0.25em 0.25em 0 0;
+  	content: '';
+  	display: inline-block;
+  	height: 0.45em;
+  	left: 0.15em;
+  	position: relative;
+  	top: 0.15em;
+  	transform: rotate(-45deg);
+  	vertical-align: top;
+  	width: 0.45em;
+  }*/
+  .chevron::before {
+    border-style: solid;
+    border-width: 0.50em 0.50em 0 0;
+    content: '';
+    display: inline-block;
+    height: 0.90em;
+    left: 0.30em;
+    position: relative;
+    top: 0.30em;
+    transform: rotate(-45deg);
+    vertical-align: top;
+    width: 0.90em;
+    /*color: grey;*/
+  }
+  .chevron.top:before {
+    margin: 0 auto;
+  }
+  .chevron.right:before {
+  	left: 0;
+  	transform: rotate(45deg);
+  }
+
+  .chevron.bottom:before {
+  	top: 0;
+  	transform: rotate(135deg);
+  }
+
+  .chevron.left:before {
+  	left: 0.25em;
+  	transform: rotate(-135deg);
+  }
+
+</style>
+
+
+
+
+</head>
+
+<body>
+<span style="float: right;">view code on <a href="https://github.com/kitab-project-org/diffViewer" target="_blank">GitHub</a></span>
+<h1>
+  <a href="https://kitab-project.org/data/apps" style="text-decoration:none; padding-left:10px; padding-right:20px; padding-top:20px" target="_blank">
+    <img src="img/logo-small-2-no-padding.svg" height="50">
+  </a>
+  Diff viewer
+</h1>
+
+<div id="inputIntro">
+  <p>Paste the two strings you want to compare in the fields below (or <a id="loadExample" href="#">load an example</a>) and click the display button.</p>
+  <p>You can also upload a csv file using the "Upload from file" button.</p>
+</div>
+
+<div id="outputIntro">
+  <p>
+    Color coding:
+    <span class="removed">only in text A</span>
+    <span> - </span>
+    <span class="added">only in text B</span>
+    <span> - </span>
+    <span class="moved">in text A and B but in different position</span>
+    <span> - </span>
+    (not highlighted: in texts A and B)
+  </p>
+</div>
+
+<div id="buttons">
+  <span id="inputButtons">
+    <input type="button" id="calcDiffButton" value="Display diff">
+    <input type="button" id="clearButton" value="Clear">
+    <input type="button" id="uploadButton" value="Upload from file">
+  </span>
+  <span id="outputButtons">
+    <input type="button" id="inputButton" value="Show input">
+    <input type="button" id="svgButton" value="Download svg">
+    <input type="button" id="pngButton" value="Download png">
+    <input type="button" id="tiffButton" value="Download tiff">
+  </span>
+  <span>
+    <input type="button" name="optionsButton" id="optionsButton" value="Options">
+  </span>
+  <span id="optionButtons">
+    <input type="button" name="resetButton" id="resetButton" value="Reset options">
+  </span>
+</div>
+
+<div id="options">
+  <p style="padding-top: 10px">Options:</p>
+  <div style="margin-left: 20px;">
+    <label for="highlightDiffBtn">Highlight </label>
+    <input type="radio" id="highlightDiffBtn" name="highlightWhat" value="diff" checked>
+    <label for="highlightDiffBtn">difference </label>
+    <input type="radio" id="highlightCommonBtn" name="highlightWhat" value="common">
+    <label for="highlightCommonBtn">common text</label>
+    <br>
+    <input type="checkbox" id="cleanCheck" name="cleanCheck" checked>
+    <label for="cleanCheck">remove OpenITI tags from texts</label>
+    <br>
+    <input type="checkbox" id="punctCheck" name="punctCheck" checked>
+    <label for="punctCheck">remove punctuation</label>
+    <br>
+    <label for="normalizeAlifCheck">Normalize: </label>
+    <input type="checkbox" id="normalizeAlifCheck" name="normalizeAlifCheck" checked>
+    <label for="normalizeAlifCheck">Alifs (أ = ا = إ = آ) </label>
+    <input type="checkbox" id="normalizeYaCheck" name="normalizeYaCheck" checked>
+    <label for="normalizeYaCheck">alif maqṣūra / final yā' (ي = ى) </label>
+    <input type="checkbox" id="normalizeHaCheck" name="normalizeHaCheck" checked>
+    <label for="normalizeHaCheck">tā marbūṭa / final hā' (ة = ه)</label>
+    <br>
+    <label for="fontSizeInput">Font size: </label>
+    <input type="text" class="num-input" id="fontSizeInput" name="fontSizeInput" value="20">
+    <label for="fontSizeInput">px</label>
+    <br>
+    <br>
+    <label for="imgWidthInput">Image size: width: </label>
+    <input type="text" class="num-input" id="imgWidthInput" name="imgWidthInput" value="200">
+    <!--<label for="imgHeightInput">mm; height: </label>
+    <input type="text" class="num-input" id="imgHeightInput" name="imgHeightInput" value="">-->
+    <label for="imgDpiInput">mm; dpi: </label>
+    <input type="text" class="num-input" id="imgDpiInput" name="imgDpiInput" value="300">
+    <br>
+    <label for="ngramInput">Refine the results using shingled character</label>
+    <input type="text" class="num-input" id="ngramInput" name="ngramInput" value="3" checked>
+    <label for="ngramInput">-grams</label>
+    <br>
+    <input type="checkbox" id="rowsCheck" name="rowsCheck">
+    <label for="rowsCheck">
+      divide the output into lines for easier reading (min.
+      <input type="text" class="num-input" id="arCharInput" name="arCharInput" value="20">
+      shared characters per line)
+    </label>
+    <br>
+    <input type="checkbox" id="singleDivCheck" name="singleDivCheck">
+    <label for="singleDivCheck">Display the diff in a single composite text (wikipedia-style)</label>
+  </div>
+</div>
+
+<div id="inputDiv">
+  <div>
+    <textarea id="inputA"></textarea>
+    <textarea id="inputB"></textarea>
+  </div>
+
+</div>
+
+<div id="pagination">
+  <input type="button" id="prevPage" value="Previous">
+  <label for="currentPageInput">Page </label>
+  <input type="text" class="num-input" id="currentPageInput" name="currentPageInput">
+  <label for="currentPageInput"> of </label>
+  <span id="lastPageSpan"></span>
+  <input type="button" id="nextPage" value="Next">
+  <input type="button" id="downloadAllPngBtn" value="Download all as png">
+  <input type="button" id="downloadAllSvgBtn" value="Download all as svg">
+</div>
+
+<div id="outputDiv">
+  <!--<div style="display: inline-block; margin: 0 auto; text-align: center;">
+    <span class="chevron top"></span>
+  </div>-->
+  <div class="resize-container">
+    <!--
+    <div class="milestoneLocatorA">
+      <div class="milestoneLocatorLineA"></div>
+    </div>-->
+    <div class="container">
+      <table id="outputTable"></table>
+    </div>
+    <!--
+    <div class="milestoneLocatorB">
+      <div class="milestoneLocatorLineB"></div>
+    </div>-->
+  </div>
+  <div id="outputSingleDiv">
+    <p>Original inline wikEdDiff output:</p>
+    <div id="cDiff"></div>
+  </div>
+  <!--<span class="chevron bottom"></span>-->
+</div>
+
+<div class="modal" id="uploadModal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>Choose a passim alignment file (srt, csv) to display:</p>
+    <input type="file" name="inputfileButton" id="inputfileButton" accept=".csv, .tsv, .srt">
+    <div id="selectRowsControls">
+      <input type="button" id="loadSelectedRows" value="Load selected rows">
+      <input type="button" id="selectAllRows" value="Select all">
+      <input type="button" id="deselectAllRows" value="Deselect all">
+      <label for="rowFilter">Filter rows: only include rows containing: </label>
+      <input type="text" name="rowFilter" id="rowFilter" value="">
+    </div>
+    <div id="selectRows">
+      <table id="csvTable"></table>
+    </div>
+  </div>
+</div>
+
+<div id="svgDataUrl" style="display: none"></div>
+<div id="pngDataUrl" style="display: none"></div>
+<canvas id="myCanvas"></canvas>
+<div id="footer">
+  <img src="img/erc-logo.jpg"></img>
+</div>
+
+<script>
+    // 从 localStorage 获取内容
+    const transcriptContent = localStorage.getItem('transcriptData');
+    if (transcriptContent) {
+        document.getElementById('inputA').value = transcriptContent;
+        localStorage.removeItem('transcriptData');
+    } else {
+        console.error('No transcript content found in localStorage');
+    }
+
+    const subtitleContent = localStorage.getItem('subtitleData');
+    if (subtitleContent) {
+        document.getElementById('inputB').value = subtitleContent;
+        localStorage.removeItem('subtitleData');
+    } else {
+        console.error('No subtitle content found in localStorage');
+    }
+</script>
+
+</body>
+</html>

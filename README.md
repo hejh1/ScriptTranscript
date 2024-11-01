@@ -27,3 +27,20 @@ pip3 install PrettyTable
 // wer rate
 python3 calc_wer.py
 python3 calc_wer.py accent
+
+### DiffViewer http server install and run
+```
+// Install http-server
+npm install -g http-server
+
+// Run http server
+http-server
+```
++ Open `localhost:8080/jiwer.html` in browser
++ Press `diffview` button and refresh to web `localhost:8080/index.html`
++ Press `Dispaly diff` button on web `localhost:8080/index.html`
+
+### Update jiwer.html
+```
+python3 jiwer.py
+```
