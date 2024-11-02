@@ -27,6 +27,7 @@ pip3 install PrettyTable
 // wer rate
 python3 calc_wer.py
 python3 calc_wer.py accent
+```
 
 ### DiffViewer http server install and run
 ```
