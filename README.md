@@ -42,5 +42,5 @@ http-server
 
 ### Update jiwer.html
 ```
-python3 jiwer.py
+python3 calc.py
 ```
