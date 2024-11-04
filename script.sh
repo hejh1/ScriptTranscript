@@ -6,7 +6,7 @@ cd $work_dir
 work_dir=$(pwd)
 echo $work_dir
 #modelPath=$work_dir"/Resources/ggml-base.bin"
-modelPath=$work_dir"/Resources/ggml-large-v3-q5_0.bin"
+modelPath=$work_dir"/Resources/ggml-large-v3-turbo-q5_0.bin"
 audioPath=$work_dir"/Resources/audioFiles/"
 outputPath=$work_dir"/Resources/audioTranscript/"
 language='en'
@@ -38,7 +38,7 @@ for path in "${pathList[@]}"; do
     echo "Path: $path"
     audioPath=$work_dir"/Resources/"$language"/"$path"/Files/"
     #audioPath=$work_dir"/Resources/"$language"/"$path"/f2/"
-    transcriptPath=$work_dir"/Resources/"$language"/"$path"/Transcript-large-v3-q5_0/"
+    transcriptPath=$work_dir"/Resources/"$language"/"$path"/Transcript-large-v3-turbo-q5_0/"
     echo "$transcriptPath \n"
     audioFiles=$(ls $audioPath | grep '.wav')
     for file in $audioFiles
