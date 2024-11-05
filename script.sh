@@ -29,7 +29,7 @@ done
 
 cd ./copilot
 git checkout main
-#git pull
+git pull
 cd ../
 cp ./copilot/InterviewCopilot/ViewModels/LocalTranscriptViewModel.swift ./ScriptTranscript/
 
